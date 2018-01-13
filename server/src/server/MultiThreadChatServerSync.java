@@ -25,6 +25,7 @@ public class MultiThreadChatServerSync {
   private static final int maxClientsCount = 10;
   private static final clientThread[] threads = new clientThread[maxClientsCount];
 
+  
   public static void main(String args[]) {
 
     // The default port number.
