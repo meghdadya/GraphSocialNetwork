@@ -30,6 +30,11 @@
         <activity
             android:name=".views.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <service
+            android:name=".clientApi.serviseApi"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

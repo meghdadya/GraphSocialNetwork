@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import ir.ac.guilan.graphsocialnetwork.R;
 import ir.ac.guilan.graphsocialnetwork.clientApi.Client;
+import ir.ac.guilan.graphsocialnetwork.clientApi.serviseApi;
 
 public class GetIpActivity extends AppCompatActivity {
 
@@ -25,10 +26,19 @@ public class GetIpActivity extends AppCompatActivity {
 
             String ip = ipAdress.getText().toString();
             Client.SERVERIP = ip;
+            startService(new Intent(this, serviseApi.class));
             Intent intent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(intent);
         });
 
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, serviseApi.class));
 
     }
 }

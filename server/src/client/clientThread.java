@@ -14,6 +14,11 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import com.google.gson.Gson;
+
+import model.commincuteObject;
+import model.users;
+
 /**
  *
  * @author babe
@@ -22,7 +27,7 @@ import java.net.Socket;
 
 // For every client's connection we call this class
 public class clientThread extends Thread{
-     private String clientName = null;
+  private String clientName = null;
   private BufferedReader is = null;
   private PrintWriter os = null;
   private Socket clientSocket = null;
@@ -42,22 +47,34 @@ public class clientThread extends Thread{
 			is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			System.out.print("Reader and writer created. ");
 			System.out.print("Accepted connection. ");
+			Gson gson = new Gson();
+		
 		   while (true) {
 	            try {
-	            	String inString;
-	    			// read the command from the client
+	            	commincuteObject mcommincuteObject=gson.fromJson(is.readLine(), commincuteObject.class);
+	
 	            	synchronized (this) {
 	            		
-	    		        if  ((inString = is.readLine()) != null) {
-			    			System.out.println("Read command " + inString);
-			    			// run the command using CommandExecutor and get its output
-			    			String outString = commandExecutor.run(inString);
-			    			System.out.println("Server sending result to client");
-			    			// send the result of the command to the client
-			    			os.println(outString);
+	    		        if  (mcommincuteObject != null) {
+	    		        	
+	    		        	if(mcommincuteObject.getMessage().getRoute().equals("register")) {
+	    		    			
+	    		    				
+	    	
+	    		        			
+	    			    			System.out.println(mcommincuteObject.getUsers().get(0).getEmail());
+	    		    				
+	    		    				
+	
+	    		    		}else if(mcommincuteObject.getMessage().getRoute().equals("login")) {
+	    		    			
+	    		   
+	    		    		
+	    		    		}
+			    			
 	    		        }
 	            	}
-	            } catch (IOException e) {
+	            } catch (Exception e) {
 	                e.printStackTrace();
 	                break;
 	            }
