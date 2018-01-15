@@ -15,7 +15,7 @@ public class Client {
     private String serverMessage;
     public static String SERVERIP; // your computer IP
     // address
-    public static final int SERVERPORT = 2222;
+    private static final int SERVERPORT = 2222;
     private OnMessageReceived mMessageListener = null;
     private boolean mRun = false;
 

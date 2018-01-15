@@ -54,6 +54,7 @@ public class serviseApi extends Service {
             //we create a Client object and
             //here the messageReceived method is implemented
             //this method calls the onProgressUpdate
+
             mClient = new Client(this::publishProgress);
             mClient.run();
 
@@ -67,6 +68,7 @@ public class serviseApi extends Service {
             // notify the adapter that the data set has changed. This means that new message received
             // from server was added to the list
             int i = 0;
+            System.out.println(values[i]);
             EventBus.getDefault().post(values[i]);
             i++;
 

@@ -35,10 +35,10 @@ public class GetIpActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopService(new Intent(this, serviseApi.class));
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopService(new Intent(this, serviseApi.class));
     }
 }

@@ -28,8 +28,8 @@ import model.users;
 // For every client's connection we call this class
 public class clientThread extends Thread{
   private String clientName = null;
-  private BufferedReader is = null;
-  private PrintWriter os = null;
+  private DataInputStream is = null;
+  private PrintStream os = null;
   private Socket clientSocket = null;
   private final clientThread[] threads;
   private int maxClientsCount;
@@ -43,34 +43,31 @@ public class clientThread extends Thread{
   public void run() {
 		try {
 			// open a new PrintWriter and BufferedReader on the socket
-			os = new PrintWriter(clientSocket.getOutputStream(), true);
-			is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			is = new DataInputStream(clientSocket.getInputStream());
+		    os = new PrintStream(clientSocket.getOutputStream());
 			System.out.print("Reader and writer created. ");
 			System.out.print("Accepted connection. ");
 			Gson gson = new Gson();
-		
+			
 		   while (true) {
 	            try {
+	        
 	            	commincuteObject mcommincuteObject=gson.fromJson(is.readLine(), commincuteObject.class);
 	
 	            	synchronized (this) {
 	            		
 	    		        if  (mcommincuteObject != null) {
 	    		        	
-	    		        	if(mcommincuteObject.getMessage().getRoute().equals("register")) {
-	    		    			
-	    		    				
-	    	
-	    		        			
-	    			    			System.out.println(mcommincuteObject.getUsers().get(0).getEmail());
-	    		    				
-	    		    				
-	
-	    		    		}else if(mcommincuteObject.getMessage().getRoute().equals("login")) {
-	    		    			
-	    		   
-	    		    		
-	    		    		}
+		    		        	if(mcommincuteObject.getMessage().getRoute().equals("register")) {
+		    		        		
+		    		        		System.out.println(is.readLine());
+		    		        		os.println(new commandExecutor().register(mcommincuteObject.getUsers().get(0)));
+		
+		    		    		}else if(mcommincuteObject.getMessage().getRoute().equals("login")) {
+		    		    			
+		    		    			System.out.println(is.readLine());
+		    		    				
+		    		    		}
 			    			
 	    		        }
 	            	}

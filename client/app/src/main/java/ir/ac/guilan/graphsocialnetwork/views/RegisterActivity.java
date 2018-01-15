@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -53,10 +54,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (checkEmail(email.getText().toString()) && !name.getText().toString().equals("") && !password.getText().toString().equals("") && !bio.getText().toString().equals("")) {
-
-            serviseApi.mClient.sendMessage(objectcreator(email.getText().toString(), name.getText().toString(), password.getText().toString(), bio.getText().toString()));
-
-
+            if (serviseApi.mClient != null) {
+                serviseApi.mClient.sendMessage(objectcreator(email.getText().toString(), name.getText().toString(), password.getText().toString(), bio.getText().toString()));
+            }
 
         } else {
             Snackbar.make(findViewById(R.id.activity_register), "please fill all field correctly", Snackbar.LENGTH_SHORT).show();
@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
     String objectcreator(String email, String name, String password, String bio) {
-        List<users> usersList=new ArrayList<>();
+        List<users> usersList = new ArrayList<>();
         users musers = new users();
         musers.setEmail(email);
         musers.setName(name);
@@ -100,7 +100,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(String event) {
 
-        out.println(event);
+        Toast.makeText(this, event, Toast.LENGTH_SHORT).show();
+        if (event.equals("Thanks for registration"))
+            finish();
 
 
     }

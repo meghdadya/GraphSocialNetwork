@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import model.users;
  
 /**
  *
@@ -39,8 +41,8 @@ public class DBConnection {
      * @param bio
      * @param photo
      */
-    public void insert_users(String name, String email,String password,String bio,String photo) {
-        String sql = "INSERT INTO tbl_users(name,email,password,bio,photo) VALUES('"+name+"','"+email+"','"+password+"','"+bio+"','"+photo+"')";
+    public void insert_users(users users ) {
+        String sql = "INSERT INTO tbl_users(name,email,password,bio,photo) VALUES('"+users.getName()+"','"+users.getEmail()+"','"+users.getPassword()+"','"+users.getBio()+"','"+users.getPhoto()+"')";
         try (Connection conn = this.connect();
         		Statement stmt = conn.createStatement()) {
     		stmt.execute(sql);
@@ -48,6 +50,24 @@ public class DBConnection {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    
+    
+    public String checkUserEmail(users users ) {
+    	try (Connection conn = this.connect();
+        		Statement stmt = conn.createStatement()) {
+        		ResultSet rs = stmt.executeQuery( "SELECT name,email FROM tbl_users where name='"+users.getName()+"' or email='"+users.getEmail()+"';" );
+        	    	if(!rs.next()) {
+        	    		return "successful";
+        	    	}else {
+        	    		return "unsuccessful";
+        	    	}
+        	  
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    	return "problem in query";
     }
     
     public String select_users() {
@@ -72,8 +92,13 @@ public class DBConnection {
     }
     
     
-//    public static void main(String[] args) {
-//    new 	DBConnection().select_users();
-//    }
+    public static void main(String[] args) {
+    	users users =new users();
+    	users.setName("meghdad");
+    	users.setEmail("me@gmail.com");
+    System.out.println(new 	DBConnection().checkUserEmail(users));
+    
+  //  System.out.println(new 	DBConnection().select_users());
+    }
     
 }

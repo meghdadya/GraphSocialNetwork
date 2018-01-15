@@ -11,3 +11,15 @@ Japp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/GetIpActivity.java,7/3
 Mapp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/RegisterActivity.java,0/2/02c9525ad2914721e23d846255e719feb2c0d105
 w
 Gapp/src/main/java/ir/ac/guilan/graphsocialnetwork/clientApi/Client.java,5/b/5b101f7e6c47f9561d30c40c74a84b9248c55dda
+@
+app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
+t
+Dapp/src/main/java/ir/ac/guilan/graphsocialnetwork/model/message.java,5/7/570494b944d1831421424b1a7f1a48f8a57289fb
+}
+Mapp/src/main/java/ir/ac/guilan/graphsocialnetwork/model/commincuteObject.java,2/0/200c18f5035b83113435b5fbc37ae5404ee7a0b5
+r
+Bapp/src/main/java/ir/ac/guilan/graphsocialnetwork/model/users.java,1/6/1621f6bfc1e41df3f85366bb423a10b043330a38
+q
+Aapp/src/main/java/ir/ac/guilan/graphsocialnetwork/model/post.java,1/0/109c8b31dd04153d2540b17aa8c52a443fb88841
+{
+Kapp/src/main/java/ir/ac/guilan/graphsocialnetwork/clientApi/serviseApi.java,6/5/654bd72d381647d0e60f6c644f80faddfbba524d
