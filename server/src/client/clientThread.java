@@ -28,8 +28,8 @@ import model.users;
 // For every client's connection we call this class
 public class clientThread extends Thread{
   private String clientName = null;
-  private DataInputStream is = null;
-  private PrintStream os = null;
+  private BufferedReader is = null;
+  private PrintWriter os = null;
   private Socket clientSocket = null;
   private final clientThread[] threads;
   private int maxClientsCount;
@@ -43,8 +43,8 @@ public class clientThread extends Thread{
   public void run() {
 		try {
 			// open a new PrintWriter and BufferedReader on the socket
-			is = new DataInputStream(clientSocket.getInputStream());
-		    os = new PrintStream(clientSocket.getOutputStream());
+			os = new PrintWriter(clientSocket.getOutputStream(), true);
+			is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			System.out.print("Reader and writer created. ");
 			System.out.print("Accepted connection. ");
 			Gson gson = new Gson();
