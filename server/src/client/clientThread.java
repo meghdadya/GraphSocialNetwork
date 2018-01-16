@@ -24,23 +24,22 @@ import model.users;
  * @author babe
  */
 
-
 // For every client's connection we call this class
-public class clientThread extends Thread{
-  private String clientName = null;
-  private BufferedReader is = null;
-  private PrintWriter os = null;
-  private Socket clientSocket = null;
-  private final clientThread[] threads;
-  private int maxClientsCount;
+public class clientThread extends Thread {
+	private String clientName = null;
+	private BufferedReader is = null;
+	private PrintWriter os = null;
+	private Socket clientSocket = null;
+	private final clientThread[] threads;
+	private int maxClientsCount;
 
-  public clientThread(Socket clientSocket, clientThread[] threads) {
-    this.clientSocket = clientSocket;
-    this.threads = threads;
-    maxClientsCount = threads.length;
-  }
+	public clientThread(Socket clientSocket, clientThread[] threads) {
+		this.clientSocket = clientSocket;
+		this.threads = threads;
+		maxClientsCount = threads.length;
+	}
 
-  public void run() {
+	public void run() {
 		try {
 			// open a new PrintWriter and BufferedReader on the socket
 			os = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -48,46 +47,45 @@ public class clientThread extends Thread{
 			System.out.print("Reader and writer created. ");
 			System.out.print("Accepted connection. ");
 			Gson gson = new Gson();
-			
-		   while (true) {
-	            try {
-	        
-	            	commincuteObject mcommincuteObject=gson.fromJson(is.readLine(), commincuteObject.class);
-	
-	            	synchronized (this) {
-	            		
-	    		        if  (mcommincuteObject != null) {
-	    		        	
-		    		        	if(mcommincuteObject.getMessage().getRoute().equals("register")) {
-		    		        		
-		    		        		System.out.println(is.readLine());
-		    		        		os.println(new commandExecutor().register(mcommincuteObject.getUsers().get(0)));
-		
-		    		    		}else if(mcommincuteObject.getMessage().getRoute().equals("login")) {
-		    		    			
-		    		    			System.out.println(is.readLine());
-		    		    				
-		    		    		}
-			    			
-	    		        }
-	            	}
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	                break;
-	            }
-		   }		
-		}
-		catch (IOException e) {
+
+			while (true) {
+				try {
+
+					commincuteObject mcommincuteObject = gson.fromJson(is.readLine(), commincuteObject.class);
+
+					synchronized (this) {
+
+						if (mcommincuteObject != null) {
+
+							if (mcommincuteObject.getMessage().getRoute().equals("register")) {
+
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().register(mcommincuteObject.getUsers().get(0)));
+
+							} else if (mcommincuteObject.getMessage().getRoute().equals("login")) {
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().login(mcommincuteObject.getUsers().get(0)));
+								
+
+							}
+
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					break;
+				}
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			// close the connection to the client
 			try {
 				clientSocket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			catch (IOException e) {
-				e.printStackTrace();	
-			}			
 			System.out.println("Output closed.");
-}
-}
+		}
+	}
 }

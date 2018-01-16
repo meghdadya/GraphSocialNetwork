@@ -1,10 +1,10 @@
 
-Jsquid:S1444".Make this "public static SERVERIP" field final(Ã°ö°8Âäó,
-lsquid:S1192"KDefine a constant instead of duplicating this literal "TCP Client" 3 times.(Ôú’‚ùÿÿÿÿ8Âäó,
-Ksquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8Âäó,
-‡"squid:ClassVariableVisibilityCheck"TMake SERVERIP a static final constant or non-public and provide accessors if needed.(Ã°ö°8Âäó,
-tsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(êğğ¾8Âäó,
-Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Âäó,
-osquid:S3008"SRename this field "SERVERIP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã°ö°8Âäó,
 ƒsquid:S4087"bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(Ûæ•øûÿÿÿÿ8Âäó,
 Ssquid:S2589"7Remove this expression which always evaluates to "true"(ı–Ğà8Âäó,
+lsquid:S1192"KDefine a constant instead of duplicating this literal "TCP Client" 3 times.(Ôú’‚ùÿÿÿÿ8Âäó,
+Jsquid:S1444".Make this "public static SERVERIP" field final(Ã°ö°8Âäó,
+Vsquid:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Âäó,
+Ksquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8Âäó,
+osquid:S3008"SRename this field "SERVERIP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã°ö°8Âäó,
+‡"squid:ClassVariableVisibilityCheck"TMake SERVERIP a static final constant or non-public and provide accessors if needed.(Ã°ö°8Âäó,
+tsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(êğğ¾8Âäó,
