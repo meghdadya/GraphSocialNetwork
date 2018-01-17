@@ -1,14 +1,12 @@
 
-|squid:S3923"[Remove this conditional structure or edit its code blocks so that they're not all the same.(¬ ¤Úşÿÿÿÿ8 ³ù,
-Ksquid:S1905"*Remove this unnecessary cast to "Toolbar".(ªü–ıÿÿÿÿ8 ³ù,
-Rsquid:S1905"7Remove this unnecessary cast to "FloatingActionButton".(–“€G8 ³ù,
-Psquid:S1905"/Remove this unnecessary cast to "DrawerLayout".(ĞÍè¨şÿÿÿÿ8 ³ù,
-Rsquid:S1905"1Remove this unnecessary cast to "NavigationView".(üûÍøÿÿÿÿ8 ³ù,
-Psquid:S1905"/Remove this unnecessary cast to "DrawerLayout".(ĞÍè¨şÿÿÿÿ8 ³ù,
-Psquid:S1905"/Remove this unnecessary cast to "DrawerLayout".(ĞÍè¨şÿÿÿÿ8 ³ù,
-Fsquid:S00108")Either remove or fill this block of code.(æÎà 8 ³ù,
-Fsquid:S00108")Either remove or fill this block of code.(ó´®8 ³ù,
-Fsquid:S00108")Either remove or fill this block of code.(õœšÿ8 ³ù,
-Ksquid:S00108")Either remove or fill this block of code.(Õó³÷úÿÿÿÿ8 ³ù,
-Ksquid:S00108")Either remove or fill this block of code.(ê±›Ñüÿÿÿÿ8 ³ù,
+Fsquid:S00108")Either remove or fill this block of code.(æÎà 8ô÷½˜,
+Ksquid:S00108")Either remove or fill this block of code.(ê±›Ñüÿÿÿÿ8ô÷½˜,
+|squid:S3923"[Remove this conditional structure or edit its code blocks so that they're not all the same.(¬ ¤Úşÿÿÿÿ8ô÷½˜,
+\squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ8à¾˜,
+Fsquid:S00108")Either remove or fill this block of code.(õœšÿ8ô÷½˜,
+Gsquid:UselessImportCheck"Remove this duplicated import.(´Å‰8¼æ½˜,
+Ksquid:S00108")Either remove or fill this block of code.(Õó³÷úÿÿÿÿ8ô÷½˜,
 osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ù ®Íúÿÿÿÿ8 ³ù,
+Fsquid:S00108")Either remove or fill this block of code.(ó´®8ô÷½˜,
+Lsquid:UselessImportCheck"Remove this duplicated import.(úäçÇüÿÿÿÿ8¼æ½˜,
+ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.( À®p8¼æ½˜,

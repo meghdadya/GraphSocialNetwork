@@ -8,6 +8,7 @@ public class commincuteObject {
     private List<follow> Follow;
     private List<post> Post;
     private List<users> Users;
+    private List<posts> posts;
 
     public message getMessage() {
         return Message;
@@ -39,5 +40,12 @@ public class commincuteObject {
 
     public void setUsers(List<users> users) {
         Users = users;
+    }
+    public List<posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<posts> posts) {
+        this.posts = posts;
     }
 }

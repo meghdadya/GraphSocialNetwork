@@ -65,8 +65,17 @@ public class clientThread extends Thread {
 							} else if (mcommincuteObject.getMessage().getRoute().equals("login")) {
 								System.out.println(is.readLine());
 								os.println(new commandExecutor().login(mcommincuteObject.getUsers().get(0)));
-								
 
+							} else if (mcommincuteObject.getMessage().getRoute().equals("post")) {
+								System.out.println(is.readLine());
+								if (mcommincuteObject.getMessage().getMessageText().equals("newpost")) {
+									os.println(new commandExecutor().newPost(mcommincuteObject.getPost().get(0)));
+								} else if (mcommincuteObject.getMessage().getMessageText().equals("deletepost")) {
+
+								}
+							} else if (mcommincuteObject.getMessage().getRoute().equals("home")) {
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().getHome(mcommincuteObject.getUsers().get(0)));
 							}
 
 						}
