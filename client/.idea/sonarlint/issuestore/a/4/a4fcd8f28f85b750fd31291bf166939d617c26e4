@@ -1,0 +1,7 @@
+
+xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(Ñüπº8ÏªØöë,
+ùsquid:S1186"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(°ÈÜÜ8í∏È∏ë,
+csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ÊÜÛÊ
+¢squid:S1186"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ËâÓ˙ˇˇˇˇ8ﬁçêπë,
+ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.(†¿Æp8ÏªØöë,
+Ksquid:S00108")Either remove or fill this block of code.(ÅÜ≈–˛ˇˇˇˇ8ë±¬Áë,

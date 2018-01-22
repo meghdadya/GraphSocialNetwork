@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.commincuteObject;
+import model.follow;
 import model.message;
 import model.post;
 import model.posts;
@@ -47,6 +48,7 @@ public class DBConnection {
 	 * @param photo
 	 */
 	public void insert_users(users users) {
+
 		String sql = "INSERT INTO tbl_users(name,email,password,bio,photo) VALUES('" + users.getName() + "','"
 				+ users.getEmail() + "','" + users.getPassword() + "','" + users.getBio() + "','" + users.getPhoto()
 				+ "')";
@@ -74,24 +76,23 @@ public class DBConnection {
 		return "problem in query";
 	}
 
-	public String select_users() {
+	public users select_user(int id) {
+
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_users;");
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String name = rs.getString("name");
-				String age = rs.getString("email");
-				System.out.println("ID = " + id);
-				System.out.println("NAME = " + name);
-				System.out.println("AGE = " + age);
-				System.out.println();
-			}
+			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_users where id='" + id + "';");
+			users user = new users();
+			user.setId(rs.getInt("id"));
+			user.setName(rs.getString("name"));
+			user.setEmail(rs.getString("email"));
+			user.setBio(rs.getString("bio"));
+			user.setPhoto(rs.getString("photo"));
 			rs.close();
 			stmt.close();
+			return user;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		return "";
+		return null;
 	}
 
 	public users login_users(users user) {
@@ -172,8 +173,8 @@ public class DBConnection {
 	public List<posts> select_posts_home() {
 		List<posts> postsList = new ArrayList();
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery(
-					"SELECT *\r\n" + "FROM tbl_post\r\n" + "INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id;");
+			ResultSet rs = stmt
+					.executeQuery("SELECT * FROM tbl_post INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id;");
 			while (rs.next()) {
 
 				int id = rs.getInt("id");
@@ -200,14 +201,114 @@ public class DBConnection {
 		return null;
 	}
 
+	public List<follow> select_followed(int id) {
+		List<follow> followsList = new ArrayList();
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_follow where followed_id = '" + id + "' and status=0;");
+			while (rs.next()) {
+
+				follow follow = new follow();
+				follow.setId(rs.getInt("id"));
+				follow.setFollowed_id(rs.getInt("followed_id"));
+				follow.setFollower_id(rs.getInt("follower_id"));
+				follow.setStatus(rs.getInt("status"));
+			}
+			rs.close();
+			stmt.close();
+			return followsList;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public List<users> select_users(int id) {
+
+		List<users> uesrs = new ArrayList<users>();
+
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_users where id != '" + id + "';");
+			while (rs.next()) {
+				users user = new users();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setBio(rs.getString("bio"));
+				user.setEmail(rs.getString("email"));
+				uesrs.add(user);
+			}
+			rs.close();
+			stmt.close();
+			return uesrs;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public String insertfollower(follow follow) {
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_follow WHERE follower_id='" + follow.getFollower_id()
+					+ "' and followed_id='" + follow.getFollowed_id() + "' ;");
+
+			if (rs.next()) {
+				String sql = "DELETE FROM tbl_follow WHERE follower_id = " + follow.getFollower_id() + " ";
+				stmt.execute(sql);
+				stmt.close();
+				rs.close();
+				return "unfollow";
+
+			} else {
+				 String sql = "INSERT INTO tbl_follow(follower_id,followed_id) VALUES('" +
+				 follow.getFollower_id()
+				 + "','" + follow.getFollowed_id() + "')";
+				 stmt.execute(sql);
+				 stmt.close();
+				 rs.close();
+				 return "follow";
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return "got nothing";
+	}
+	
+	
+	
+
+	public void select_users() {
+
+		List<users> uesrs = new ArrayList<users>();
+
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_users;");
+			while (rs.next()) {
+				users user = new users();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setBio(rs.getString("bio"));
+				user.setEmail(rs.getString("email"));
+				uesrs.add(user);
+				System.out.println(user.getId());
+				System.out.println(user.getName());
+				System.out.println(user.getEmail());
+				System.out.println();
+			}
+			rs.close();
+			stmt.close();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
 	public static void main(String[] args) {
+
 		// users users = new users();
 		// users.setEmail("me@gmail.com");
 		// users.setPassword("12345");
 		// System.out.println(new DBConnection().login_users(users).getEmail());
-
-		// new DBConnection().select_users();
-
 		// post post = new post();
 		// post.setDate("01/01/1336");
 		// post.setText("hello world first post ever ");
@@ -215,7 +316,15 @@ public class DBConnection {
 		// new DBConnection().insert_post(post);
 		// new DBConnection().select_posts();
 
-		System.out.println(new DBConnection().select_posts_home());
+		// System.out.println(new DBConnection().select_users().get(0).getEmail());
+
+		follow mfollow = new follow();
+		mfollow.setFollower_id(1);
+		mfollow.setFollowed_id(2);
+		mfollow.setStatus(1);
+		System.out.println(new DBConnection().insertfollower(mfollow));
 
 	}
+	
+	
 }

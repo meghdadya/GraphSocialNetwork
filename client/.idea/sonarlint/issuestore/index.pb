@@ -29,3 +29,11 @@ Papp/src/main/java/ir/ac/guilan/graphsocialnetwork/utilities/DatePreferences.jav
 Kapp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/SendPostDialog.java,3/f/3f1d071e420ccc889a49d86c4b4cd1fdf1d944e3
 r
 Bapp/src/main/java/ir/ac/guilan/graphsocialnetwork/model/posts.java,e/7/e7de8468ca3915a12518676d90408dbff2d56ab4
+{
+Kapp/src/main/java/ir/ac/guilan/graphsocialnetwork/adapter/postsAdapter.java,f/a/faaedebb8f0a2ef18d143cec01fddadada2bb4ba
+
+Oapp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/FindFriendActivity.java,3/3/33a4d50e704bf70872a5b32c4ba359b9e276de04
+}
+Mapp/src/main/java/ir/ac/guilan/graphsocialnetwork/adapter/friendsAdapter.java,6/b/6b9b2e37ce139965ac95aac8e41c9e8658c3d0f5
+|
+Lapp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/ProfileActivity.java,a/4/a4fcd8f28f85b750fd31291bf166939d617c26e4

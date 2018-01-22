@@ -81,6 +81,9 @@ public class commandExecutor {
 					usersList.add(new DBConnection().get_user(user));
 					commincuteObject.setUsers(usersList);
 				}
+				if (new DBConnection().select_followed(user.getId()) != null) {
+					commincuteObject.setFollow(new DBConnection().select_followed(user.getId()));
+				}
 				commincuteObject.setPosts(new DBConnection().select_posts_home());
 				message.setMessageText("home done");
 			} else {
@@ -94,13 +97,33 @@ public class commandExecutor {
 		return new Gson().toJson(commincuteObject);
 	}
 
+	public String getFriends(int id) {
+
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		try {
+			if (new DBConnection().select_users(id) != null) {
+				commincuteObject.setUsers(new DBConnection().select_users(id));
+				message.setMessageText("done");
+			} else {
+
+				message.setMessageText("empty");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+
 	public static void main(String[] args) {
 		// users users = new users();
 		// users.setEmail("meghdad@gmail.com");
 		// users.setPassword("12345");
-		users user=new users();
-		user.setId(1);
-		System.out.println(new commandExecutor().getHome(user));
+		// users user = new users();
+		// user.setId(1);
+		System.out.println(new commandExecutor().getFriends(1));
 	}
 
 }

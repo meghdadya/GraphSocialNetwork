@@ -1,12 +1,7 @@
 
 Fsquid:S00108")Either remove or fill this block of code.(æÎà 8ô÷½˜,
-Ksquid:S00108")Either remove or fill this block of code.(ê±›Ñüÿÿÿÿ8ô÷½˜,
-|squid:S3923"[Remove this conditional structure or edit its code blocks so that they're not all the same.(¬ ¤Úşÿÿÿÿ8ô÷½˜,
-\squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ8à¾˜,
-Fsquid:S00108")Either remove or fill this block of code.(õœšÿ8ô÷½˜,
-Gsquid:UselessImportCheck"Remove this duplicated import.(´Å‰8¼æ½˜,
-Ksquid:S00108")Either remove or fill this block of code.(Õó³÷úÿÿÿÿ8ô÷½˜,
+ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.( À®p8Œ«¢ ,
+Wsquid:UselessImportCheck".Remove this unused import 'android.view.Menu'.(£¯Ò…8†ˆûÂ,
 osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ù ®Íúÿÿÿÿ8 ³ù,
+Fsquid:S00108")Either remove or fill this block of code.(õœšÿ8ô÷½˜,
 Fsquid:S00108")Either remove or fill this block of code.(ó´®8ô÷½˜,
-Lsquid:UselessImportCheck"Remove this duplicated import.(úäçÇüÿÿÿÿ8¼æ½˜,
-ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.( À®p8¼æ½˜,

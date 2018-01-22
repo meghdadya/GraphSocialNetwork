@@ -5,4 +5,6 @@
     <color name="colorAccent">#00e2f0</color>
     <color name="text_color_light">#FAFAFA</color>
     <color name="text_color_dark">#424242</color>
+    <color name="shadow">#66000000</color>
+    <color name="red_A200">#FF5252</color>
 </resources>

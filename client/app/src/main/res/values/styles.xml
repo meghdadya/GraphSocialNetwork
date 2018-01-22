@@ -28,4 +28,9 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="MaterialSearchViewStyle">
+        <item name="android:hint">search</item>
+
+    </style>
+
 </resources>

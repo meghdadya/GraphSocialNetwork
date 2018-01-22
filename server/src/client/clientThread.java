@@ -76,6 +76,29 @@ public class clientThread extends Thread {
 							} else if (mcommincuteObject.getMessage().getRoute().equals("home")) {
 								System.out.println(is.readLine());
 								os.println(new commandExecutor().getHome(mcommincuteObject.getUsers().get(0)));
+							} else if (mcommincuteObject.getMessage().getRoute().equals("findfriend")) {
+								System.out.println(is.readLine());
+								if (mcommincuteObject.getMessage().getMessageText().equals("getall")) {
+									os.println(new commandExecutor()
+											.getFriends(mcommincuteObject.getUsers().get(0).getId()));
+								} else if (mcommincuteObject.getMessage().getMessageText().equals("searchfriend")) {
+
+								}
+
+							} else if (mcommincuteObject.getMessage().getRoute().equals("profile")) {
+
+							} else if (mcommincuteObject.getMessage().getRoute().equals("follow")) {
+
+								if (mcommincuteObject.getMessage().getMessageText().equals("following")) {
+									
+									
+
+								} else if (mcommincuteObject.getMessage().getMessageText().equals("followback")) {
+
+								} else if (mcommincuteObject.getMessage().getMessageText().equals("unfollow")) {
+
+								}
+
 							}
 
 						}

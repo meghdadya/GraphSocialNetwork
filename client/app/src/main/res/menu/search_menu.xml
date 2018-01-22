@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ir.ac.guilan.graphsocialnetwork.GetIPActivity">
+    tools:context=".MainActivity">
     <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_white_24dp"
         android:orderInCategory="100"
-        android:title="@string/action_notifications"
+        android:title="search"
         app:showAsAction="always" />
 </menu>

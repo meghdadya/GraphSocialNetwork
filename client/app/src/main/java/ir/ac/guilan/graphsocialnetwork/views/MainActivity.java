@@ -17,8 +17,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -40,6 +43,10 @@ public class MainActivity extends AppCompatActivity
 
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerView;
+    TextView nameUsers;
+    TextView bioUsers;
+    NotificationBadge mBadge;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         swipeRefreshLayout = findViewById(R.id.swipeContainer);
         recyclerView = findViewById(R.id.recycleview_post);
+        mBadge = findViewById(R.id.badge);
+        setTitle("");
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -69,13 +79,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View header = navigationView.getHeaderView(0);
+        nameUsers = header.findViewById(R.id.name_users);
+        bioUsers = header.findViewById(R.id.bio_users);
+
 
         serviseApi.mClient.sendMessage(objectcreator(new DatePreferences(this).getToken()));
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
 
             serviseApi.mClient.sendMessage(objectcreator(new DatePreferences(this).getToken()));
-            swipeRefreshLayout.setEnabled(false);
+            swipeRefreshLayout.setRefreshing(false);
         });
     }
 
@@ -89,27 +103,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -117,17 +110,16 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.find_friend) {
+
+            startActivity(new Intent(this, FindFriendActivity.class));
+
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -145,6 +137,9 @@ public class MainActivity extends AppCompatActivity
             adapter.add(mcommincuteObject.getPosts());
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
             recyclerView.setAdapter(adapter);
+            nameUsers.setText(mcommincuteObject.getUsers().get(0).getName());
+            bioUsers.setText(mcommincuteObject.getUsers().get(0).getBio());
+            mBadge.setNumber(10);
 
         }
     }
