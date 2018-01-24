@@ -62,7 +62,7 @@ public class friendsAdapter extends RecyclerView.Adapter<friendsAdapter.Recycler
         holder.bio.setText(user.getBio());
         holder.item.setOnClickListener(v -> {
 
-            activity.startActivity(new Intent(activity, ProfileActivity.class));
+            activity.startActivity(new Intent(activity, ProfileActivity.class).putExtra("id",user.getId()));
         });
 
 

@@ -82,16 +82,18 @@ public class clientThread extends Thread {
 									os.println(new commandExecutor()
 											.getFriends(mcommincuteObject.getUsers().get(0).getId()));
 								} else if (mcommincuteObject.getMessage().getMessageText().equals("searchfriend")) {
-
+									os.println(new commandExecutor()
+											.searchFriends(mcommincuteObject.getMessage().getJson()));
 								}
 
 							} else if (mcommincuteObject.getMessage().getRoute().equals("profile")) {
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().getProfile(mcommincuteObject.getFollow().get(0),
+										mcommincuteObject.getUsers().get(0)));
 
 							} else if (mcommincuteObject.getMessage().getRoute().equals("follow")) {
 
 								if (mcommincuteObject.getMessage().getMessageText().equals("following")) {
-									
-									
 
 								} else if (mcommincuteObject.getMessage().getMessageText().equals("followback")) {
 

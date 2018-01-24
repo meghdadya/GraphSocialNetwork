@@ -5,6 +5,8 @@ import java.util.List;
 
 import database.DBConnection;
 import model.commincuteObject;
+import model.follow;
+import model.followInfo;
 import model.message;
 import model.post;
 import model.users;
@@ -117,13 +119,70 @@ public class commandExecutor {
 		return new Gson().toJson(commincuteObject);
 	}
 
+	public String searchFriends(String query) {
+
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		try {
+			if (new DBConnection().search_users(query) != null) {
+				commincuteObject.setUsers(new DBConnection().search_users(query));
+				message.setMessageText("done");
+			} else {
+				commincuteObject.setUsers(new DBConnection().search_users(query));
+				message.setMessageText("empty");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+
+	public String getProfile(follow f, users u) {
+		followInfo followInfo = new followInfo();
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		followInfo.setPostQty(new DBConnection().select_posts(u));
+		followInfo.setFollowerQty(new DBConnection().select_follower(u));
+		followInfo.setFollowedQty(new DBConnection().select_followed(u));
+		message.setJson(new Gson().toJson(followInfo));
+		if (new DBConnection().select_users(u) != null)
+			commincuteObject.setUsers(new DBConnection().select_users(u));
+
+		if (new DBConnection().select_posts_users(u) != null)
+			commincuteObject.setPost(new DBConnection().select_posts_users(u));
+
+		if (new DBConnection().following(f) && new DBConnection().followed(f)) {
+
+			message.setMessageText("fowllowing");
+		} else if (new DBConnection().following(f) && new DBConnection().followed(f) == false) {
+
+			message.setMessageText("fowllowing");
+
+		} else if (new DBConnection().following(f) != true && new DBConnection().followed(f)) {
+
+			message.setMessageText("followback");
+
+		} else if (new DBConnection().following(f) == false && new DBConnection().followed(f) == false) {
+
+			message.setMessageText("not followed");
+
+		}
+		commincuteObject.setMessage(message);
+
+		return new Gson().toJson(commincuteObject);
+	}
+
 	public static void main(String[] args) {
-		// users users = new users();
-		// users.setEmail("meghdad@gmail.com");
-		// users.setPassword("12345");
-		// users user = new users();
-		// user.setId(1);
-		System.out.println(new commandExecutor().getFriends(1));
+		follow mfollow = new follow();
+		mfollow.setFollower_id(1);
+		mfollow.setFollowed_id(2);
+		mfollow.setStatus(0);
+		users users = new users();
+		users.setId(2);
+
+		System.out.println(new commandExecutor().getProfile(mfollow, users));
 	}
 
 }

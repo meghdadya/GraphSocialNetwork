@@ -1,8 +1,8 @@
 
-xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(„Ÿ¹¼8‡ÏÄÃ,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñ’€ä8‘òÍœ‘,
+osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ï™²şıÿÿÿÿ8«ÿƒ–‘,
 squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(óŠİı8‘òÍœ‘,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñ’€ä8‘òÍœ‘,
 squid:UselessImportCheck"QRemove this unused import 'ir.ac.guilan.graphsocialnetwork.adapter.postsAdapter'.(´î¹ïùÿÿÿÿ8«ÿƒ–‘,
 [squid:UselessImportCheck"3Remove this unused import 'android.content.Intent'.(³ğ‹G8±Ù“‘,
+xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(„Ÿ¹¼8‡ÏÄÃ,
 \squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ8‡ÏÄÃ,
-osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ï™²şıÿÿÿÿ8«ÿƒ–‘,

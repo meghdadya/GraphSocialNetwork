@@ -8,6 +8,7 @@ public class message {
 
     String route;
     String messageText;
+    String json;
 
     public String getRoute() {
         return route;
@@ -25,5 +26,11 @@ public class message {
         this.messageText = messageText;
     }
 
+    public String getJson() {
+        return json;
+    }
 
+    public void setJson(String json) {
+        this.json = json;
+    }
 }
