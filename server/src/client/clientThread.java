@@ -93,13 +93,18 @@ public class clientThread extends Thread {
 
 							} else if (mcommincuteObject.getMessage().getRoute().equals("follow")) {
 
-								if (mcommincuteObject.getMessage().getMessageText().equals("following")) {
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().followFunc(mcommincuteObject.getFollow().get(0)));
 
-								} else if (mcommincuteObject.getMessage().getMessageText().equals("followback")) {
+							} else if (mcommincuteObject.getMessage().getRoute().equals("followers")) {
 
-								} else if (mcommincuteObject.getMessage().getMessageText().equals("unfollow")) {
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().getFollowers(mcommincuteObject.getUsers().get(0)));
 
-								}
+							} else if (mcommincuteObject.getMessage().getRoute().equals("following")) {
+
+								System.out.println(is.readLine());
+								os.println(new commandExecutor().getFollowing(mcommincuteObject.getUsers().get(0)));
 
 							}
 

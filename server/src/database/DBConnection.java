@@ -150,8 +150,8 @@ public class DBConnection {
 	public List<posts> select_posts_home() {
 		List<posts> postsList = new ArrayList();
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt
-					.executeQuery("SELECT * FROM tbl_post INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id;");
+			ResultSet rs = stmt.executeQuery(
+					"SELECT * FROM tbl_post INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id ORDER BY tbl_post.id DESC;");
 			while (rs.next()) {
 
 				int id = rs.getInt("id");
@@ -232,7 +232,7 @@ public class DBConnection {
 				stmt.execute(sql);
 				stmt.close();
 				rs.close();
-				return "unfollow";
+				return "follow";
 
 			} else {
 				String sql = "INSERT INTO tbl_follow(follower_id,followed_id) VALUES('" + follow.getFollower_id()
@@ -240,7 +240,7 @@ public class DBConnection {
 				stmt.execute(sql);
 				stmt.close();
 				rs.close();
-				return "follow";
+				return "following";
 			}
 
 		} catch (SQLException e) {
@@ -365,23 +365,32 @@ public class DBConnection {
 
 	}
 
-	public List<post> select_posts_users(users users) {
-		List<post> postList = new ArrayList<>();
-
+	public List<posts> select_posts_users(users user) {
+		List<posts> postsList = new ArrayList();
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_post where user_id = '" + users.getId() + "';");
+			ResultSet rs = stmt.executeQuery(
+					"SELECT * FROM tbl_post INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id where tbl_users.id="
+							+ user.getId() + " ;");
 			while (rs.next()) {
+
+				int id = rs.getInt("id");
+				posts posts = new posts();
 				post post = new post();
+				users users = new users();
 				post.setId(rs.getInt("id"));
 				post.setUser_id(rs.getInt("user_id"));
 				post.setDate(rs.getString("date"));
 				post.setText(rs.getString("text"));
 				post.setPhoto(rs.getString("photo"));
-				postList.add(post);
+				users.setEmail(rs.getString("email"));
+				users.setName(rs.getString("name"));
+				posts.setPost(post);
+				posts.setUsers(users);
+				postsList.add(posts);
 			}
 			rs.close();
 			stmt.close();
-			return postList;
+			return postsList;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -479,6 +488,64 @@ public class DBConnection {
 		return false;
 	}
 
+	public List<users> select_followers(users u) {
+
+		List<users> uesrs = new ArrayList<users>();
+
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			// ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_users INNER JOIN
+			// tbl_follow ON tbl_users.id = tbl_follow.followed_id where
+			// tbl_users.id="+u.getId()+" ORDER BY tbl_users.id DESC ;");
+			ResultSet rs = stmt.executeQuery(
+					"select * from tbl_users\r\n" + "inner join tbl_follow on tbl_users.id = tbl_follow.follower_id\r\n"
+							+ "where tbl_follow.followed_id = " + u.getId()); // where tbl_users.id="+u.getId()+" ORDER
+																				// BY tbl_users.id DESC ;");
+			while (rs.next()) {
+				users user = new users();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setBio(rs.getString("bio"));
+				user.setEmail(rs.getString("email"));
+				uesrs.add(user);
+			}
+			rs.close();
+			stmt.close();
+			return uesrs;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public List<users> select_following(users u) {
+
+		List<users> uesrs = new ArrayList<users>();
+
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			// ResultSet rs = stmt.executeQuery("SELECT * FROM tbl_users INNER JOIN
+			// tbl_follow ON tbl_users.id = tbl_follow.followed_id where
+			// tbl_users.id="+u.getId()+" ORDER BY tbl_users.id DESC ;");
+			ResultSet rs = stmt.executeQuery(
+					"select * from tbl_users\r\n" + "inner join tbl_follow on tbl_users.id = tbl_follow.followed_id\r\n"
+							+ "where tbl_follow.follower_id =" + u.getId()); // where tbl_users.id="+u.getId()+" ORDER
+																				// BY tbl_users.id DESC ;");
+			while (rs.next()) {
+				users user = new users();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setBio(rs.getString("bio"));
+				user.setEmail(rs.getString("email"));
+				uesrs.add(user);
+			}
+			rs.close();
+			stmt.close();
+			return uesrs;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
 	public static void main(String[] args) {
 
 		// users users = new users();
@@ -496,16 +563,19 @@ public class DBConnection {
 		// DBConnection().select_users().get(0).getEmail());
 		//
 		// follow mfollow = new follow();
-		// mfollow.setFollower_id(1);
-		// mfollow.setFollowed_id(2);
+		// mfollow.setFollower_id(3);
+		// mfollow.setFollowed_id(1);
 		// mfollow.setStatus(0);
-		// System.out.println(new DBConnection().followed(mfollow));
+		// System.out.println(new DBConnection().insertfollower(mfollow));
 
+		users users = new users();
+		users.setId(2);
+
+		System.out.println(new DBConnection().select_followed(users));
+		// new DBConnection().search_users("me@gmail.c");
 		// users users = new users();
 		// users.setId(2);
-		//
-		// System.out.println(new DBConnection().select_followed(users).size());
-		new DBConnection().search_users("me@gmail.c");
+		// new DBConnection().select_followers(users);
 	}
 
 }

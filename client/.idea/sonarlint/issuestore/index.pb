@@ -39,3 +39,5 @@ Mapp/src/main/java/ir/ac/guilan/graphsocialnetwork/adapter/friendsAdapter.java,
 Lapp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/ProfileActivity.java,a/4/a4fcd8f28f85b750fd31291bf166939d617c26e4
 w
 Gapp/src/main/java/ir/ac/guilan/graphsocialnetwork/model/followInfo.java,3/5/35570d3acb932c6a93440d889c8009dd75d66d58
+
+Oapp/src/main/java/ir/ac/guilan/graphsocialnetwork/views/followListActivity.java,f/5/f58e18af7e2bc5aeee1441955b70c2115b63887d

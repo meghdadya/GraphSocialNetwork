@@ -1,6 +1,6 @@
 
+~squid:S1488"jImmediately return this expression instead of assigning it to the temporary variable "recyclerViewHolder".(Óâœ
 gsquid:S2259"LA "NullPointerException" could be thrown; "usersArrayList" is nullable here.(Ï²ü8Û’Æ•‘,
 Hsquid:S1602",Remove useless curly braces around statement(úÀš8ª¢„¹‘,
-vsquid:UselessImportCheck"HRemove this unused import 'ir.ac.guilan.graphsocialnetwork.model.posts'.(’÷¦Ûøÿÿÿÿ8µ²Æ•‘,
-~squid:S1488"jImmediately return this expression instead of assigning it to the temporary variable "recyclerViewHolder".(Óâœ
 csquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ªµÊ
+vsquid:UselessImportCheck"HRemove this unused import 'ir.ac.guilan.graphsocialnetwork.model.posts'.(’÷¦Ûøÿÿÿÿ8µ²Æ•‘,

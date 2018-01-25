@@ -5,44 +5,41 @@ package model;
  */
 
 public class follow {
-    int id;
-    int follower_id;
-    int followed_id;
-    int status;
-    public int getId() {
-        return id;
-    }
+	int id;
+	int follower_id;
+	int followed_id;
+	int status;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public int getFollower_id() {
-        return follower_id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setFollower_id(int follower_id) {
-        this.follower_id = follower_id;
-    }
+	public int getFollower_id() {
+		return follower_id;
+	}
 
-    public int getFollowed_id() {
-        return followed_id;
-    }
+	public void setFollower_id(int follower_id) {
+		this.follower_id = follower_id;
+	}
 
-    public void setFollowed_id(int followed_id) {
-        this.followed_id = followed_id;
-    }
+	public int getFollowed_id() {
+		return followed_id;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	public void setFollowed_id(int followed_id) {
+		this.followed_id = followed_id;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-
-
-
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 }

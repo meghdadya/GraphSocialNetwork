@@ -43,7 +43,11 @@
         <activity
             android:name=".views.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.followListActivity"
+            android:label="@string/title_activity_follow_list"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

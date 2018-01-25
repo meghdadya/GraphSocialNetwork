@@ -6,60 +6,59 @@ package model;
 
 public class users {
 
-    int id;
-    String name;
-    String email;
-    String password;
-    String bio;
-    String photo;
+	int id;
+	String name;
+	String email;
+	String password;
+	String bio;
+	String photo;
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    public String getPassword() {
-        return password;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getBio() {
-        return bio;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
+	public String getBio() {
+		return bio;
+	}
 
-    public String getPhoto() {
-        return photo;
-    }
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
+	public String getPhoto() {
+		return photo;
+	}
 
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 }

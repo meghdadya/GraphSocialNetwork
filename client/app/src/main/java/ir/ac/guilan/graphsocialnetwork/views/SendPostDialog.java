@@ -1,6 +1,7 @@
 package ir.ac.guilan.graphsocialnetwork.views;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -116,6 +118,13 @@ public class SendPostDialog extends DialogFragment {
             if (!postText.getText().equals("")) {
                 serviseApi.mClient.sendMessage(objectcreator(postText.getText().toString()));
                 Toast.makeText(getActivity(), "Posting... ", Toast.LENGTH_SHORT).show();
+                serviseApi.mClient.sendMessage(objectcreator1(new DatePreferences(getActivity()).getToken()));
+                View view = getActivity().getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+                dismiss();
             } else {
                 Toast.makeText(getActivity(), "No news? ", Toast.LENGTH_SHORT).show();
             }
@@ -130,8 +139,21 @@ public class SendPostDialog extends DialogFragment {
         return super.onOptionsItemSelected(item);
     }
 
+    String objectcreator1(int id) {
+        users user = new users();
+        user.setId(id);
+        List<users> userList = new ArrayList<>();
+        userList.add(user);
+        message mmessage = new message();
+        mmessage.setRoute("home");
+        commincuteObject mcommincuteObject = new commincuteObject();
+        mcommincuteObject.setMessage(mmessage);
+        mcommincuteObject.setUsers(userList);
+        return new Gson().toJson(mcommincuteObject);
+    }
+
     String objectcreator(String text) {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
         List<post> postList = new ArrayList<>();
         post post = new post();
         post.setText(text);

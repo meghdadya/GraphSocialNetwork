@@ -144,14 +144,14 @@ public class commandExecutor {
 		message message = new message();
 		commincuteObject commincuteObject = new commincuteObject();
 		followInfo.setPostQty(new DBConnection().select_posts(u));
-		followInfo.setFollowerQty(new DBConnection().select_follower(u));
-		followInfo.setFollowedQty(new DBConnection().select_followed(u));
+		followInfo.setFollowerQty(new DBConnection().select_followed(u));
+		followInfo.setFollowedQty(new DBConnection().select_follower(u));
 		message.setJson(new Gson().toJson(followInfo));
 		if (new DBConnection().select_users(u) != null)
 			commincuteObject.setUsers(new DBConnection().select_users(u));
 
 		if (new DBConnection().select_posts_users(u) != null)
-			commincuteObject.setPost(new DBConnection().select_posts_users(u));
+			commincuteObject.setPosts(new DBConnection().select_posts_users(u));
 
 		if (new DBConnection().following(f) && new DBConnection().followed(f)) {
 
@@ -166,7 +166,7 @@ public class commandExecutor {
 
 		} else if (new DBConnection().following(f) == false && new DBConnection().followed(f) == false) {
 
-			message.setMessageText("not followed");
+			message.setMessageText("follow");
 
 		}
 		commincuteObject.setMessage(message);
@@ -174,15 +174,73 @@ public class commandExecutor {
 		return new Gson().toJson(commincuteObject);
 	}
 
-	public static void main(String[] args) {
-		follow mfollow = new follow();
-		mfollow.setFollower_id(1);
-		mfollow.setFollowed_id(2);
-		mfollow.setStatus(0);
-		users users = new users();
-		users.setId(2);
+	public String followFunc(follow f) {
 
-		System.out.println(new commandExecutor().getProfile(mfollow, users));
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		message.setRoute("followFunc");
+		message.setMessageText(new DBConnection().insertfollower(f));
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+
+	public String getFollowers(users u) {
+
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		try {
+			if (new DBConnection().select_followers(u) != null) {
+				commincuteObject.setUsers(new DBConnection().select_followers(u));
+				message.setMessageText("done");
+			} else {
+
+				message.setMessageText("empty");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+
+	public String getFollowing(users u) {
+
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		try {
+			if (new DBConnection().select_following(u) != null) {
+				commincuteObject.setUsers(new DBConnection().select_following(u));
+				message.setMessageText("done");
+			} else {
+
+				message.setMessageText("empty");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+
+	public static void main(String[] args) {
+		// follow mfollow = new follow();
+		// mfollow.setFollower_id(1);
+		// mfollow.setFollowed_id(2);
+		// mfollow.setStatus(0);
+		//
+		// follow mfollow = new follow();
+		// mfollow.setFollower_id(3);
+		// mfollow.setFollowed_id(1);
+		// mfollow.setStatus(0);
+		// // System.out.println(new commandExecutor().followFunc(mfollow));
+		 users users = new users();
+		 users.setId(2);
+		 System.out.println(new commandExecutor().getFollowing(users));
+		// System.out.println(new commandExecutor().getFriends(2));
+		// System.out.println(new commandExecutor().getProfile(mfollow, users));
+
 	}
 
 }

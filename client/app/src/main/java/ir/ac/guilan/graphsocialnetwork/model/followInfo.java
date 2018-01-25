@@ -6,31 +6,31 @@ package ir.ac.guilan.graphsocialnetwork.model;
 
 public class followInfo {
 
-    int followerQty;
-    int followedQty;
-    int postQty;
+    String followerQty;
+    String followedQty;
+    String postQty;
 
-    public int getFollowerQty() {
+    public String getFollowerQty() {
         return followerQty;
     }
 
-    public void setFollowerQty(int followerQty) {
+    public void setFollowerQty(String followerQty) {
         this.followerQty = followerQty;
     }
 
-    public int getFollowedQty() {
+    public String getFollowedQty() {
         return followedQty;
     }
 
-    public void setFollowedQty(int followedQty) {
+    public void setFollowedQty(String followedQty) {
         this.followedQty = followedQty;
     }
 
-    public int getPostQty() {
+    public String getPostQty() {
         return postQty;
     }
 
-    public void setPostQty(int postQty) {
+    public void setPostQty(String postQty) {
         this.postQty = postQty;
     }
 

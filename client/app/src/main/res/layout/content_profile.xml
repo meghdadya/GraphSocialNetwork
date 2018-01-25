@@ -76,6 +76,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="onClickFollowers"
                 android:orientation="vertical">
 
                 <TextView
@@ -98,6 +99,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="onClickFollowing"
                 android:orientation="vertical">
 
                 <TextView
@@ -118,6 +120,7 @@
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_profile"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"

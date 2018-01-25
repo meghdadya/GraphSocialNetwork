@@ -133,13 +133,17 @@ public class MainActivity extends AppCompatActivity
 
         if (!event.equals("")) {
             commincuteObject mcommincuteObject = new Gson().fromJson(event, commincuteObject.class);
-            postsAdapter adapter = new postsAdapter(this);
-            adapter.add(mcommincuteObject.getPosts());
-            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-            recyclerView.setAdapter(adapter);
-            nameUsers.setText(mcommincuteObject.getUsers().get(0).getName());
-            bioUsers.setText(mcommincuteObject.getUsers().get(0).getBio());
-            mBadge.setNumber(10);
+            if (mcommincuteObject.getPosts() != null) {
+                postsAdapter adapter = new postsAdapter(this);
+                adapter.add(mcommincuteObject.getPosts());
+                recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+                recyclerView.setAdapter(adapter);
+            }
+            if (mcommincuteObject.getUsers() != null) {
+                nameUsers.setText(mcommincuteObject.getUsers().get(0).getName());
+                bioUsers.setText(mcommincuteObject.getUsers().get(0).getBio());
+                mBadge.setNumber(10);
+            }
 
         }
     }

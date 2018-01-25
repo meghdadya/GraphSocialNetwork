@@ -2,22 +2,22 @@ package model;
 
 public class posts {
 
-	  post post;
-	    users users;
+	post post;
+	users users;
 
-	    public post getPost() {
-	        return post;
-	    }
+	public post getPost() {
+		return post;
+	}
 
-	    public void setPost(post post) {
-	        this.post = post;
-	    }
+	public void setPost(post post) {
+		this.post = post;
+	}
 
-	    public users getUsers() {
-	        return users;
-	    }
+	public users getUsers() {
+		return users;
+	}
 
-	    public void setUsers(users users) {
-	        this.users = users;
-	    }
+	public void setUsers(users users) {
+		this.users = users;
+	}
 }

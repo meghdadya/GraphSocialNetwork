@@ -1,7 +1,4 @@
 
-ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.( À®p8ì»¯š‘,
-csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(æ†óæ
-Ksquid:S00108")Either remove or fill this block of code.(†ÅÐþÿÿÿÿ8‘±Âç‘,
-xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(„Ÿ¹¼8ì»¯š‘,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡é††8’¸é¸‘,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ðè‰îúÿÿÿÿ8Þ¹‘,
+jsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(æ†óæ8–†‰Þ’,
+Y
+squid:S106"9Replace this use of System.out or System.err by a logger.(‹½˜‘úÿÿÿÿ8–†‰Þ’,
