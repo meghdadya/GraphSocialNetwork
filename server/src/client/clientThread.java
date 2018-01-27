@@ -88,8 +88,9 @@ public class clientThread extends Thread {
 
 							} else if (mcommincuteObject.getMessage().getRoute().equals("profile")) {
 								System.out.println(is.readLine());
+							
 								os.println(new commandExecutor().getProfile(mcommincuteObject.getFollow().get(0),
-										mcommincuteObject.getUsers().get(0)));
+										mcommincuteObject.getUsers().get(0),mcommincuteObject.getMessage()));
 
 							} else if (mcommincuteObject.getMessage().getRoute().equals("follow")) {
 
@@ -105,6 +106,11 @@ public class clientThread extends Thread {
 
 								System.out.println(is.readLine());
 								os.println(new commandExecutor().getFollowing(mcommincuteObject.getUsers().get(0)));
+
+							}else if (mcommincuteObject.getMessage().getRoute().equals("like")) {
+
+								System.out.println(is.readLine());
+								new commandExecutor().setLike(mcommincuteObject.getMessage());
 
 							}
 

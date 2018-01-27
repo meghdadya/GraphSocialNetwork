@@ -6,6 +6,8 @@ package ir.ac.guilan.graphsocialnetwork.model;
 
 public class posts {
 
+    int like_count;
+    boolean liked;
     post post;
     users users;
 
@@ -23,5 +25,21 @@ public class posts {
 
     public void setUsers(users users) {
         this.users = users;
+    }
+
+    public int getLike_count() {
+        return like_count;
+    }
+
+    public void setLike_count(int like_count) {
+        this.like_count = like_count;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
     }
 }

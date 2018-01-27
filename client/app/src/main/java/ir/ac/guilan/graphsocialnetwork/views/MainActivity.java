@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     TextView nameUsers;
     TextView bioUsers;
     NotificationBadge mBadge;
+    LinearLayout myprofile;
 
 
     @Override
@@ -82,7 +84,12 @@ public class MainActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         nameUsers = header.findViewById(R.id.name_users);
         bioUsers = header.findViewById(R.id.bio_users);
+        myprofile = header.findViewById(R.id.my_profile);
+        myprofile.setOnClickListener(v -> {
 
+            startActivity(new Intent(this, ProfileActivity.class).putExtra("id", new DatePreferences(this).getToken()));
+
+        });
 
         serviseApi.mClient.sendMessage(objectcreator(new DatePreferences(this).getToken()));
 

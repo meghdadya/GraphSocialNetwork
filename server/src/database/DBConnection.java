@@ -12,6 +12,7 @@ import java.util.List;
 
 import model.commincuteObject;
 import model.follow;
+import model.like;
 import model.message;
 import model.post;
 import model.posts;
@@ -147,11 +148,18 @@ public class DBConnection {
 		}
 	}
 
-	public List<posts> select_posts_home() {
+	public List<posts> select_posts_home(users user) {
 		List<posts> postsList = new ArrayList();
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery(
-					"SELECT * FROM tbl_post INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id ORDER BY tbl_post.id DESC;");
+			ResultSet rs = stmt.executeQuery("SELECT \r\n" + "tbl_post.*,\r\n" + "tbl_users.name as user_name,\r\n"
+					+ "tbl_users.photo as user_photo,\r\n" + "tbl_users.email as user_email,\r\n" + "(\r\n"
+					+ "	SELECT count(id) FROM tbl_like WHERE tbl_like.post_id = tbl_post.id\r\n" + ")as count_like,\r\n"
+					+ "tbl_like.user_id as like_by_me\r\n" + "FROM tbl_follow\r\n"
+					+ "JOIN tbl_post ON ( tbl_post.user_id = tbl_follow.followed_id )\r\n"
+					+ "JOIN tbl_users ON (tbl_post.user_id = tbl_users.id)\r\n"
+					+ "LEFT JOIN tbl_like ON (tbl_like.post_id = tbl_post.id AND tbl_like.user_id =" + user.getId()
+					+ ")\r\n" + "WHERE tbl_follow.follower_id = " + user.getId() + "\r\n" + "GROUP BY tbl_post.id\r\n"
+					+ "ORDER BY id DESC;");
 			while (rs.next()) {
 
 				int id = rs.getInt("id");
@@ -162,9 +170,12 @@ public class DBConnection {
 				post.setUser_id(rs.getInt("user_id"));
 				post.setDate(rs.getString("date"));
 				post.setText(rs.getString("text"));
-				post.setPhoto(rs.getString("photo"));
-				users.setEmail(rs.getString("email"));
-				users.setName(rs.getString("name"));
+				users.setEmail(rs.getString("user_email"));
+				users.setName(rs.getString("user_name"));
+				if (rs.getInt("like_by_me") == user.getId()) {
+					posts.setLiked(true);
+				}
+				posts.setLike_count(rs.getInt("count_like"));
 				posts.setPost(post);
 				posts.setUsers(users);
 				postsList.add(posts);
@@ -365,12 +376,20 @@ public class DBConnection {
 
 	}
 
-	public List<posts> select_posts_users(users user) {
+	public List<posts> select_posts_users(users user , int LoginId) {
 		List<posts> postsList = new ArrayList();
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery(
-					"SELECT * FROM tbl_post INNER JOIN tbl_users ON tbl_post.user_id = tbl_users.id where tbl_users.id="
-							+ user.getId() + " ;");
+			String query = "SELECT tbl_post.* , tbl_users.name as user_name, tbl_users.photo as user_photo , tbl_users.email as user_email, "
+					+ "( SELECT COUNT(tbl_like.id) FROM tbl_like WHERE tbl_like.post_id = tbl_post.id ) as count_like , "
+					+ "tbl_like.user_id as like_by_me "
+					+ "FROM tbl_users "
+					+ "JOIN tbl_post ON (tbl_post.user_id = tbl_users.id) "
+					+ "LEFT JOIN tbl_like ON (tbl_like.post_id = tbl_post.id AND tbl_like.user_id = "+Integer.toString(LoginId)+" ) "
+					+ "WHERE tbl_users.id = "+Integer.toString(user.getId())+" "
+					+ "GROUP BY tbl_post.id "
+					+ "ORDER BY id DESC;";
+			
+			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 
 				int id = rs.getInt("id");
@@ -381,9 +400,13 @@ public class DBConnection {
 				post.setUser_id(rs.getInt("user_id"));
 				post.setDate(rs.getString("date"));
 				post.setText(rs.getString("text"));
-				post.setPhoto(rs.getString("photo"));
-				users.setEmail(rs.getString("email"));
-				users.setName(rs.getString("name"));
+				users.setEmail(rs.getString("user_email"));
+				users.setName(rs.getString("user_name"));
+				if (rs.getInt("like_by_me") == LoginId) {
+					posts.setLiked(true);
+				}
+				System.out.println(rs.getString("count_like"));
+				posts.setLike_count(rs.getInt("count_like"));
 				posts.setPost(post);
 				posts.setUsers(users);
 				postsList.add(posts);
@@ -546,6 +569,32 @@ public class DBConnection {
 		return null;
 	}
 
+	public void like(like like) {
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("select * from tbl_like where  user_id='"+like.getUser_id()+"' and post_id='"+like.getPost_id()+"';");
+
+			if (rs.next()) {
+				String sql = "DELETE FROM tbl_like where  user_id='"+like.getUser_id()+"' and post_id='"+like.getPost_id()+"'; ";
+				stmt.execute(sql);
+				stmt.close();
+				rs.close();
+				System.out.println("unlike");
+
+			} else {
+				String sql = "INSERT INTO tbl_like(user_id,post_id) VALUES('" + like.getUser_id()
+						+ "','" + like.getPost_id() + "')";
+				stmt.execute(sql);
+				stmt.close();
+				rs.close();
+				System.out.println("like");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
 	public static void main(String[] args) {
 
 		// users users = new users();
@@ -568,14 +617,18 @@ public class DBConnection {
 		// mfollow.setStatus(0);
 		// System.out.println(new DBConnection().insertfollower(mfollow));
 
-		users users = new users();
-		users.setId(2);
-
-		System.out.println(new DBConnection().select_followed(users));
+		// users users = new users();
+		// users.setId(2);
+		//
+		// System.out.println(new DBConnection().select_followed(users));
 		// new DBConnection().search_users("me@gmail.c");
 		// users users = new users();
 		// users.setId(2);
 		// new DBConnection().select_followers(users);
+		like l1=new like();
+		l1.setPost_id(1);
+		l1.setUser_id(2);
+		new DBConnection().like(l1);
 	}
 
 }

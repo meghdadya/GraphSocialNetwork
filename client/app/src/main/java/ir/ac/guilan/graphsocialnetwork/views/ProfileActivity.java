@@ -62,6 +62,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         btnFollowing.setOnClickListener(this);
         containerProfile.setOnRefreshListener(this);
         serviseApi.mClient.sendMessage(objectcreator());
+        if(id==new DatePreferences(this).getToken()){
+            btnFollowing.setVisibility(View.GONE);
+        }
 
 
     }
@@ -123,6 +126,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         followList.add(follow);
         message mmessage = new message();
         mmessage.setRoute("profile");
+        mmessage.setMessageText(Integer.toString(new DatePreferences(this).getToken()));
         mcommincuteObject.setMessage(mmessage);
         mcommincuteObject.setUsers(userList);
         mcommincuteObject.setFollow(followList);
