@@ -35,7 +35,9 @@ import ir.ac.guilan.graphsocialnetwork.R;
 import ir.ac.guilan.graphsocialnetwork.adapter.postsAdapter;
 import ir.ac.guilan.graphsocialnetwork.clientApi.serviseApi;
 import ir.ac.guilan.graphsocialnetwork.model.commincuteObject;
+import ir.ac.guilan.graphsocialnetwork.model.followInfo;
 import ir.ac.guilan.graphsocialnetwork.model.message;
+import ir.ac.guilan.graphsocialnetwork.model.user_notifications;
 import ir.ac.guilan.graphsocialnetwork.model.users;
 import ir.ac.guilan.graphsocialnetwork.utilities.DatePreferences;
 
@@ -149,8 +151,11 @@ public class MainActivity extends AppCompatActivity
             if (mcommincuteObject.getUsers() != null) {
                 nameUsers.setText(mcommincuteObject.getUsers().get(0).getName());
                 bioUsers.setText(mcommincuteObject.getUsers().get(0).getBio());
-                mBadge.setNumber(10);
             }
+            if (mcommincuteObject.getNotificationsList() != null) {
+                mBadge.setNumber(mcommincuteObject.getNotificationsList().size());
+            }
+
 
         }
     }
@@ -178,5 +183,10 @@ public class MainActivity extends AppCompatActivity
         mcommincuteObject.setMessage(mmessage);
         mcommincuteObject.setUsers(userList);
         return new Gson().toJson(mcommincuteObject);
+    }
+
+    public void onClickNotifications(View view) {
+
+        startActivity(new Intent(this, notificationActivity.class));
     }
 }

@@ -1,2 +1,6 @@
 
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢©ÿÄ8øÊ¹²“,
+wsquid:S00116"URename this field "like_count" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø˜Çšýÿÿÿÿ8œ‹¸²“,
+ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì¶È¸8øÊ¹²“,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢©ÿÄ8øÊ¹²“,
 csquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ø·î™

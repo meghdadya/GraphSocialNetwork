@@ -5,5 +5,8 @@
 	<classpathentry kind="src" path="assets"/>
 	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.21.0.jar"/>
 	<classpathentry kind="lib" path="libs/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="libs/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="libs/miglayout15-swing.jar"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

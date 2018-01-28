@@ -14,8 +14,10 @@ import model.commincuteObject;
 import model.follow;
 import model.like;
 import model.message;
+import model.notification;
 import model.post;
 import model.posts;
+import model.user_notifications;
 import model.users;
 
 /**
@@ -146,6 +148,9 @@ public class DBConnection {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		users users = new users();
+		users.setId(post.getUser_id());
+		create_post_notification(users, post);
 	}
 
 	public List<posts> select_posts_home(users user) {
@@ -155,8 +160,8 @@ public class DBConnection {
 					+ "tbl_users.photo as user_photo,\r\n" + "tbl_users.email as user_email,\r\n" + "(\r\n"
 					+ "	SELECT count(id) FROM tbl_like WHERE tbl_like.post_id = tbl_post.id\r\n" + ")as count_like,\r\n"
 					+ "tbl_like.user_id as like_by_me\r\n" + "FROM tbl_follow\r\n"
-					+ "JOIN tbl_post ON ( tbl_post.user_id = tbl_follow.followed_id )\r\n"
-					+ "JOIN tbl_users ON (tbl_post.user_id = tbl_users.id)\r\n"
+					+ "JOIN tbl_post ON ( tbl_post.user_id = tbl_follow.followed_id OR tbl_post.user_id = "
+					+ user.getId() + " )\r\n" + "JOIN tbl_users ON (tbl_post.user_id = tbl_users.id)\r\n"
 					+ "LEFT JOIN tbl_like ON (tbl_like.post_id = tbl_post.id AND tbl_like.user_id =" + user.getId()
 					+ ")\r\n" + "WHERE tbl_follow.follower_id = " + user.getId() + "\r\n" + "GROUP BY tbl_post.id\r\n"
 					+ "ORDER BY id DESC;");
@@ -251,6 +256,7 @@ public class DBConnection {
 				stmt.execute(sql);
 				stmt.close();
 				rs.close();
+				create_follow_notification(follow);
 				return "following";
 			}
 
@@ -567,6 +573,21 @@ public class DBConnection {
 		return null;
 	}
 
+	public int select_user_id(int post_id) {
+		int id;
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT user_id FROM tbl_post where id='" + post_id + "';");
+			id = rs.getInt("user_id");
+			rs.close();
+			stmt.close();
+			return id;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return 0;
+
+	}
+
 	public void like(like like) {
 		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
 			ResultSet rs = stmt.executeQuery("select * from tbl_like where  user_id='" + like.getUser_id()
@@ -587,6 +608,9 @@ public class DBConnection {
 				stmt.close();
 				rs.close();
 				System.out.println("like");
+				users users = new users();
+				users.setId(select_user_id(like.getPost_id()));
+				create_like_notification(users);
 			}
 
 		} catch (SQLException e) {
@@ -603,13 +627,88 @@ public class DBConnection {
 						+ users.getId() + "," + u.getId() + "," + post.getId() + ",'post','new Post',0)";
 				stmt.execute(sql);
 				stmt.close();
-				System.out.println("like");
+				System.out.println("post notification create");
 
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}
 
+	}
+
+	public void create_like_notification(users users) {
+
+		for (users u : select_followers(users)) {
+			try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+				String sql = "insert Into tbl_notification(from_user_id,to_user_id,type,message,seen)values("
+						+ users.getId() + "," + u.getId() + ",'like','Like notification',0)";
+				stmt.execute(sql);
+				stmt.close();
+				System.out.println("like notification create");
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+	
+	public void create_follow_notification(follow follow) {
+
+			try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+				String sql = "insert Into tbl_notification(from_user_id,to_user_id,type,message,seen)values("
+						+ follow.getFollower_id() + "," +follow.getFollowed_id() + ",'follow','follow notification',0)";
+				stmt.execute(sql);
+				stmt.close();
+				System.out.println("follow notification create");
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		
+
+	}
+
+	public List<user_notifications> select_notification(users user) {
+		List<user_notifications> user_notificationsList = new ArrayList();
+		try (Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT \r\n" + "tbl_notification.*,\r\n"
+					+ "tbl_users.id as user_id , \r\n" + "tbl_users.email  as user_email,\r\n"
+					+ "tbl_users.name  as user_name,\r\n" + "tbl_users.photo as user_photo,\r\n"
+					+ "tbl_post.id as post_id,\r\n" + "tbl_post.text as post_text\r\n" + "FROM tbl_notification\r\n"
+					+ "JOIN tbl_users ON tbl_users.id = tbl_notification.from_user_id\r\n"
+					+ "LEFT JOIN tbl_post ON tbl_post.id = tbl_notification.post_id\r\n"
+					+ "WHERE tbl_notification.to_user_id = " + user.getId() + "\r\n" + "ORDER BY seen ASC, id DESC;");
+			while (rs.next()) {
+				user_notifications user_notifications = new user_notifications();
+				notification notification = new notification();
+				post post = new post();
+				users users = new users();
+				users.setId(rs.getInt("user_id"));
+				users.setName(rs.getString("user_name"));
+				users.setEmail(rs.getString("user_email"));
+				post.setId(rs.getInt("post_id"));
+				post.setText(rs.getString("post_text"));
+				notification.setId(rs.getInt("id"));
+				notification.setFrom_user_id(rs.getInt("from_user_id"));
+				notification.setTo_user_id(rs.getInt("to_user_id"));
+				notification.setMessage(rs.getString("message"));
+				notification.setType(rs.getString("type"));
+				notification.setPost_id(rs.getInt("post_id"));
+				notification.setSeen(rs.getInt("seen"));
+				user_notifications.setNotification(notification);
+				user_notifications.setPost(post);
+				user_notifications.setUsers(users);
+				user_notificationsList.add(user_notifications);
+
+			}
+			rs.close();
+			stmt.close();
+			return user_notificationsList;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 
 	public static void main(String[] args) {
@@ -628,24 +727,27 @@ public class DBConnection {
 		// System.out.println(new
 		// DBConnection().select_users().get(0).getEmail());
 		//
-		// follow mfollow = new follow();
-		// mfollow.setFollower_id(3);
-		// mfollow.setFollowed_id(1);
-		// mfollow.setStatus(0);
-		// System.out.println(new DBConnection().insertfollower(mfollow));
+		 follow mfollow = new follow();
+		 mfollow.setFollower_id(3);
+		 mfollow.setFollowed_id(1);
+		 mfollow.setStatus(0);
+		 System.out.println(new DBConnection().insertfollower(mfollow));
 
-		// users users = new users();
-		// users.setId(2);
+//		 users users = new users();
+//		 users.setId(2);
 		//
 		// System.out.println(new DBConnection().select_followed(users));
 		// new DBConnection().search_users("me@gmail.c");
 		// users users = new users();
 		// users.setId(2);
 		// new DBConnection().select_followers(users);
-		like l1 = new like();
-		l1.setPost_id(1);
-		l1.setUser_id(2);
-		new DBConnection().like(l1);
+		// like l1 = new like();
+		// l1.setPost_id(1);
+		// l1.setUser_id(2);
+		// new DBConnection().like(l1);
+			
+		//	System.out.println(new DBConnection().select_notification(users));
+			
 	}
 
 }

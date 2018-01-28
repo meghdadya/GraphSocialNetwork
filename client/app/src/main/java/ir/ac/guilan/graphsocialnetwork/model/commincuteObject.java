@@ -13,6 +13,7 @@ public class commincuteObject {
     private List<post> Post;
     private List<users> Users;
     private List<posts> posts;
+    private List<user_notifications> notificationsList;
 
     public message getMessage() {
         return Message;
@@ -52,5 +53,13 @@ public class commincuteObject {
 
     public void setPosts(List<posts> posts) {
         this.posts = posts;
+    }
+
+    public List<user_notifications> getNotificationsList() {
+        return notificationsList;
+    }
+
+    public void setNotificationsList(List<user_notifications> notificationsList) {
+        this.notificationsList = notificationsList;
     }
 }

@@ -87,6 +87,9 @@ public class commandExecutor {
 				if (new DBConnection().select_followed(user.getId()) != null) {
 					commincuteObject.setFollow(new DBConnection().select_followed(user.getId()));
 				}
+				if (new DBConnection().select_notification(user) != null) {
+					commincuteObject.setNotificationsList(new DBConnection().select_notification(user));
+				}
 				commincuteObject.setPosts(new DBConnection().select_posts_home(user));
 				message.setMessageText("home done");
 			} else {
@@ -242,27 +245,28 @@ public class commandExecutor {
 		// mfollow.setFollowed_id(2);
 		// mfollow.setStatus(0);
 		//
-		follow mfollow = new follow();
-		mfollow.setFollower_id(3);
-		mfollow.setFollowed_id(1);
-		mfollow.setStatus(0);
+		// follow mfollow = new follow();
+		// mfollow.setFollower_id(3);
+		// mfollow.setFollowed_id(1);
+		// mfollow.setStatus(0);
 		// // System.out.println(new commandExecutor().followFunc(mfollow));
 		users users = new users();
 		users.setId(1);
+		System.out.println(new commandExecutor().getHome(users));
 		// message message=new message();
 		// message.setMessageText("2");
 
 		// System.out.println(new commandExecutor().getHome(users));
 		// System.out.println(new commandExecutor().getFriends(2));
 		// System.out.println(new commandExecutor().getProfile(mfollow, users,message));
-		like l1 = new like();
-		l1.setPost_id(1);
-		l1.setUser_id(2);
-
-		message message = new message();
-		message.setJson(new Gson().toJson(l1));
-
-		new commandExecutor().setLike(message);
+		// like l1 = new like();
+		// l1.setPost_id(1);
+		// l1.setUser_id(2);
+		//
+		//
+		// message message = new message();
+		// message.setJson(new Gson().toJson(l1));
+		// new commandExecutor().setLike(message);
 	}
 
 }

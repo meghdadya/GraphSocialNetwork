@@ -1,7 +1,10 @@
 
 Wsquid:UselessImportCheck".Remove this unused import 'android.view.Menu'.(£¯Ò…8†ˆûÂ,
-Fsquid:S00108")Either remove or fill this block of code.(æÎà 8ô÷½˜,
-osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ù ®Íúÿÿÿÿ8 ³ù,
-Fsquid:S00108")Either remove or fill this block of code.(ó´®8ô÷½˜,
 ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.( À®p8Œ«¢ ,
-Fsquid:S00108")Either remove or fill this block of code.(õœšÿ8ô÷½˜,
+Fsquid:S00108")Either remove or fill this block of code.(ó´®8Á¨¹“,
+~squid:UselessImportCheck"URemove this unused import 'ir.ac.guilan.graphsocialnetwork.model.user_notifications'.(ÙÒ÷¹8»ÀòÛ“,
+{squid:UselessImportCheck"MRemove this unused import 'ir.ac.guilan.graphsocialnetwork.model.followInfo'.(ø–¸³øÿÿÿÿ8™ÎçÛ“,
+Msquid:S1602",Remove useless curly braces around statement(Ñåîıúÿÿÿÿ8Â¼‘¹“,
+Fsquid:S00108")Either remove or fill this block of code.(æÎà 8Á¨¹“,
+Fsquid:S00108")Either remove or fill this block of code.(õœšÿ8Á¨¹“,
+osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ù ®Íúÿÿÿÿ8Á¨¹“,

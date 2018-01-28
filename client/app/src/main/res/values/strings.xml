@@ -25,4 +25,5 @@
     <string name="title_activity_find_friend">FindFriendActivity</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_follow_list">followListActivity</string>
+    <string name="title_activity_notification">notificationActivity</string>
 </resources>

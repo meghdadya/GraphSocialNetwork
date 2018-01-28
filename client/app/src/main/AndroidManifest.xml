@@ -47,6 +47,10 @@
         <activity
             android:name=".views.followListActivity"
             android:label="@string/title_activity_follow_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".views.notificationActivity"
+            android:label="@string/title_activity_notification"
             android:theme="@style/AppTheme"></activity>
     </application>
 

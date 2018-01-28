@@ -1,0 +1,10 @@
+
+csquid:UselessImportCheck"5Remove this unused import 'android.widget.ImageView'.(ú¯ëàüÿÿÿÿ8ñ±ÍÜ“,
+squid:S1488"jImmediately return this expression instead of assigning it to the temporary variable "recyclerViewHolder".(¿°Ìç
+fsquid:S2259"LA "NullPointerException" could be thrown; "postsArrayList" is nullable here.(…Œìžþÿÿÿÿ
+vsquid:UselessImportCheck"HRemove this unused import 'ir.ac.guilan.graphsocialnetwork.model.posts'.(’÷¦Ûøÿÿÿÿ8šÁ®Ü“,
+squid:UselessImportCheck"VRemove this unused import 'ir.ac.guilan.graphsocialnetwork.utilities.DatePreferences'.(ÂœíÏ8–ë‘Ü“,
+zsquid:UselessImportCheck"QRemove this unused import 'ir.ac.guilan.graphsocialnetwork.clientApi.serviseApi'.(Ÿ×È¹8–ë‘Ü“,
+gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥”ò÷
+hsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÜÔëµûÿÿÿÿ
+gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥”ò÷
