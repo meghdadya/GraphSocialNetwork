@@ -1,10 +1,6 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/23/18.
- */
-
-public class followInfo {
+public class followInfo { //fill followInfo constructor
 
     String followerQty;
     String followedQty;

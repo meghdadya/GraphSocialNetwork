@@ -1,10 +1,6 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/9/18.
- */
-
-public class post {
+public class post { //fill post constructor
     int id;
     String text;
     int user_id;

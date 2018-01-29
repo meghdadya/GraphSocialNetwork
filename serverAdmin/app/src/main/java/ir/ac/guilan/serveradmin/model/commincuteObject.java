@@ -2,11 +2,8 @@ package ir.ac.guilan.serveradmin.model;
 
 import java.util.List;
 
-/**
- * Created by gilaceco on 1/14/18.
- */
-
-public class commincuteObject {
+public class commincuteObject {//fill the commincuteObject  constructor
+    //commincuteObject = object have all detail for example follow,post,notification,like,email...
 
     private message Message;
     private List<follow> Follow;
@@ -14,6 +11,7 @@ public class commincuteObject {
     private List<users> Users;
     private List<posts> posts;
     private List<user_notifications> notificationsList;
+    private List<graphNodes> graphNodesList;
 
     public message getMessage() {
         return Message;
@@ -61,5 +59,13 @@ public class commincuteObject {
 
     public void setNotificationsList(List<user_notifications> notificationsList) {
         this.notificationsList = notificationsList;
+    }
+
+    public List<graphNodes> getGraphNodesList() {
+        return graphNodesList;
+    }
+
+    public void setGraphNodesList(List<graphNodes> graphNodesList) {
+        this.graphNodesList = graphNodesList;
     }
 }

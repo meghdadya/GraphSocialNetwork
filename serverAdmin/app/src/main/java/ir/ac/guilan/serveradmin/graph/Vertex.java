@@ -3,7 +3,7 @@ package ir.ac.guilan.serveradmin.graph;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Vertex implements Serializable {
+public class Vertex implements Serializable {//graph node
 	public Profile profile;
 	public ArrayList<Vertex> followings = new ArrayList<Vertex>();
 

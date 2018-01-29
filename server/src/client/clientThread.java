@@ -112,6 +112,19 @@ public class clientThread extends Thread {
 								System.out.println(is.readLine());
 								new commandExecutor().setLike(mcommincuteObject.getMessage());
 
+							}else if (mcommincuteObject.getMessage().getRoute().equals("admin")) {
+								
+								if (mcommincuteObject.getMessage().getMessageText().equals("getallusers")) {
+									os.println(new commandExecutor().getallusers());
+								} else if (mcommincuteObject.getMessage().getMessageText().equals("following")) {
+									
+									os.println(new commandExecutor().getNodes());
+
+								}
+
+							}else if (mcommincuteObject.getMessage().getRoute().equals("postlikes")) {
+								os.println(new commandExecutor().getPostLikes(mcommincuteObject.getPost().get(0)));
+
 							}
 
 						}

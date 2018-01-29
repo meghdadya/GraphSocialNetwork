@@ -1,5 +1,5 @@
 
-osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(õùÛ¯ÿÿÿÿÿ8ñìÿ›,
-xsquid:S1450"WRemove the "ipAdress" field and declare it as a local variable in the relevant methods.(ìÃŒÕþÿÿÿÿ8÷µ¥ù,
 Rsquid:S2696"6Make the enclosing method "static" or remove this set.(£çýŽ8Ýóî›,
 wsquid:S1450"VRemove the "connect" field and declare it as a local variable in the relevant methods.(–‘Ž«ÿÿÿÿÿ8÷µ¥ù,
+osquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(õùÛ¯ÿÿÿÿÿ8ñìÿ›,
+xsquid:S1450"WRemove the "ipAdress" field and declare it as a local variable in the relevant methods.(ìÃŒÕþÿÿÿÿ8÷µ¥ù,

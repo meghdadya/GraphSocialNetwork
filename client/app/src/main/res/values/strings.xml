@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GraphSocialNetwork</string>
+    <string name="app_name">StarWorld</string>
     <string name="action_notifications">Notification</string>
     <string name="title_activity_login">Sign in</string>
 
@@ -26,4 +26,5 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_follow_list">followListActivity</string>
     <string name="title_activity_notification">notificationActivity</string>
+    <string name="title_activity_likes">LikesActivity</string>
 </resources>

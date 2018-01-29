@@ -1,10 +1,6 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/27/18.
- */
-
-public class like {
+public class like {//fill the like constructor
     int id;
     int user_id;
     int post_id;

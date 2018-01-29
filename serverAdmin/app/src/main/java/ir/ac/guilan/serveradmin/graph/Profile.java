@@ -1,12 +1,10 @@
 package ir.ac.guilan.serveradmin.graph;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import ir.ac.guilan.serveradmin.model.users;
 
-
-public class Profile implements Serializable {
+public class Profile implements Serializable {//profile had edge and vertex for fill graph
 
 	users user = new users();
 	public Vertex profileVertex;

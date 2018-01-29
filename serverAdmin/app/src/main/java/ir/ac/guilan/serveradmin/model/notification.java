@@ -1,10 +1,6 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/28/18.
- */
-
-public class notification {
+public class notification { //fill the notification constructor
     int id;
     int from_user_id;
     int to_user_id;

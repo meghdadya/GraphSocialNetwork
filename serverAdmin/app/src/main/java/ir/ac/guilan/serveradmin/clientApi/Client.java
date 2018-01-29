@@ -13,9 +13,8 @@ import java.net.Socket;
 public class Client {
 
     private String serverMessage;
-    public static String SERVERIP; // your computer IP
-    // address
-    private static final int SERVERPORT = 2222;
+    public static String SERVERIP; // your computer IP address
+    private static final int SERVERPORT = 2222; // IP for connect
     private OnMessageReceived mMessageListener = null;
     private boolean mRun = false;
 

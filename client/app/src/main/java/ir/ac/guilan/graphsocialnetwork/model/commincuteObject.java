@@ -2,11 +2,7 @@ package ir.ac.guilan.graphsocialnetwork.model;
 
 import java.util.List;
 
-/**
- * Created by gilaceco on 1/14/18.
- */
-
-public class commincuteObject {
+public class commincuteObject { //fill commincuteObject constructor
 
     private message Message;
     private List<follow> Follow;

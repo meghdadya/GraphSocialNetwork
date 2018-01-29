@@ -1,10 +1,6 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/9/18.
- */
-
-public class users {
+public class users { //fill users constructor of create object
 
     int id;
     String name;

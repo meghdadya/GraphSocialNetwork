@@ -1,6 +1,7 @@
 package ir.ac.guilan.graphsocialnetwork.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import ir.ac.guilan.graphsocialnetwork.model.like;
 import ir.ac.guilan.graphsocialnetwork.model.message;
 import ir.ac.guilan.graphsocialnetwork.model.posts;
 import ir.ac.guilan.graphsocialnetwork.utilities.DatePreferences;
+import ir.ac.guilan.graphsocialnetwork.views.LikesActivity;
 
 /**
  * Created by meghdadya on 7/19/17.
@@ -87,17 +89,17 @@ public class postsAdapter extends RecyclerView.Adapter<postsAdapter.RecyclerView
                 postsArrayList.get(position).setLiked(false);
                 postsArrayList.get(position).setLike_count(posts.getLike_count() - 1);
                 holder.like_count.setText(Integer.toString(posts.getLike_count()));
-                serviseApi.mClient.sendMessage(objectCreator( new DatePreferences(activity).getToken(),posts.getPost().getId()));
+                serviseApi.mClient.sendMessage(objectCreator(new DatePreferences(activity).getToken(), posts.getPost().getId()));
             } else {
                 holder.like.setImageResource(R.drawable.ic_heart_filled);
                 postsArrayList.get(position).setLiked(true);
                 postsArrayList.get(position).setLike_count(posts.getLike_count() + 1);
                 holder.like_count.setText(Integer.toString(posts.getLike_count()));
-                serviseApi.mClient.sendMessage(objectCreator( new DatePreferences(activity).getToken(),posts.getPost().getId()));
+                serviseApi.mClient.sendMessage(objectCreator(new DatePreferences(activity).getToken(), posts.getPost().getId()));
             }
         });
         holder.like_count.setOnClickListener(v -> {
-
+            activity.startActivity(new Intent(activity, LikesActivity.class).putExtra("postid", posts.getPost().getId()));
 
         });
 

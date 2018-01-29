@@ -116,6 +116,18 @@ public class FindFriendActivity extends AppCompatActivity implements SwipeRefres
         return new Gson().toJson(mcommincuteObject);
     }
 
+    String objectcreator(String query) {
+        commincuteObject mcommincuteObject = new commincuteObject();
+        List<users> userList = new ArrayList<>();
+        message mmessage = new message();
+        mmessage.setRoute("findfriend");
+        mmessage.setMessageText("searchfriend");
+        mmessage.setJson(query);
+        mcommincuteObject.setMessage(mmessage);
+        mcommincuteObject.setUsers(userList);
+        return new Gson().toJson(mcommincuteObject);
+    }
+
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -124,6 +136,8 @@ public class FindFriendActivity extends AppCompatActivity implements SwipeRefres
 
     @Override
     public boolean onQueryTextChange(String newText) {
+
+        serviseApi.mClient.sendMessage(objectcreator(newText));
         return false;
     }
 

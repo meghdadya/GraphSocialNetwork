@@ -13,13 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ir.ac.guilan.graphsocialnetwork.R;
-import ir.ac.guilan.graphsocialnetwork.model.posts;
 import ir.ac.guilan.graphsocialnetwork.model.users;
 import ir.ac.guilan.graphsocialnetwork.views.ProfileActivity;
-
-/**
- * Created by meghdadya on 7/19/17.
- */
 
 public class friendsAdapter extends RecyclerView.Adapter<friendsAdapter.RecyclerViewHolder> {
 
@@ -67,7 +62,6 @@ public class friendsAdapter extends RecyclerView.Adapter<friendsAdapter.Recycler
 
 
     }
-
 
     @Override
     public int getItemCount() {

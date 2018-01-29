@@ -1,10 +1,6 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/14/18.
- */
-
-public class message {
+public class message {//fill the message constructor
 
     String route;
     String messageText;

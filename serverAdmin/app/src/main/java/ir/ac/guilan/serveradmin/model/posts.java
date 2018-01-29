@@ -1,10 +1,8 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/17/18.
- */
-
-public class posts {
+public class posts { //fill the posts constructor
+    //posts have all detail of post
+    //for preview post in activiti
 
     int like_count;
     boolean liked;

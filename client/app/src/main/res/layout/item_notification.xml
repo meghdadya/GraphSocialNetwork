@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:gravity="center"
-            android:text="مقداد"
+            android:text="عماد"
             android:textStyle="bold"
             tools:ignore="HardcodedText,RtlHardcoded" />
 
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="من عاشق باشگاه سپیدرودم"
+            android:text="متن خود را وارد کنید ..."
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="من عاشق باشگاه سپیدرودم"
+            android:text="متن خود را وارد کنید ..."
             tools:ignore="HardcodedText,RtlHardcoded" />
 
     </LinearLayout>

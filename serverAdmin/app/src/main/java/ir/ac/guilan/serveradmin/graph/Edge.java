@@ -3,7 +3,7 @@ package ir.ac.guilan.serveradmin.graph;
 import java.io.Serializable;
 
 
-public class Edge implements Serializable {
+public class Edge implements Serializable {//graph's edge
 	Profile v1, v2;
 
 	public Edge addEdge(Profile v1, Profile v2) {

@@ -1,10 +1,7 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/23/18.
- */
 
-public class followInfo {
+public class followInfo {//fill the followInfo constructor
 
     String followerQty;
     String followedQty;

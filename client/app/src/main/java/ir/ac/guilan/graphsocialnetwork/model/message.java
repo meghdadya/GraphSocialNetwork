@@ -1,10 +1,6 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/14/18.
- */
-
-public class message {
+public class message { //fill message constructor
 
     String route;
     String messageText;

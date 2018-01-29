@@ -1,11 +1,11 @@
 
-csquid:UselessImportCheck":Remove this unused import 'java.util.concurrent.TimeUnit'.(Æ™ş8¤¬ÀŸ,
-†squid:S1488"jImmediately return this expression instead of assigning it to the temporary variable "recyclerViewHolder".(¡®Ò´8£ò½Ÿ,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥”ò÷8¸ÚÎ·“,
 msquid:S2259"LA "NullPointerException" could be thrown; "postsArrayList" is nullable here.(…Œìşÿÿÿÿ8“¬ÃŸ,
-jsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(±İí8£ò½Ÿ,
-Fsquid:S00108")Either remove or fill this block of code.(âë©ñ8şÌ”´“,
-wsquid:S00116"URename this field "like_count" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¾Ãøÿÿÿÿ8´ç°³“,
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥”ò÷8¸ÚÎ·“,
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥”ò÷8¸ÚÎ·“,
+Hsquid:S1602",Remove useless curly braces around statement(âë©ñ8Œíïƒ”,
+csquid:UselessImportCheck":Remove this unused import 'java.util.concurrent.TimeUnit'.(Æ™ş8¤¬ÀŸ,
 Tsquid:UselessImportCheck"+Remove this unused import 'java.util.Date'.(¸…¼ü8İÏ³“,
+nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥”ò÷8¸ÚÎ·“,
+jsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(±İí8£ò½Ÿ,
 `squid:UselessImportCheck"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8¤¬ÀŸ,
+wsquid:S00116"URename this field "like_count" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¾Ãøÿÿÿÿ8´ç°³“,
+†squid:S1488"jImmediately return this expression instead of assigning it to the temporary variable "recyclerViewHolder".(¡®Ò´8£ò½Ÿ,

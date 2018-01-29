@@ -1,7 +1,7 @@
 
+xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(„Ÿ¹¼8œúãÜ“,
+csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.( ÈÎˆ
 squid:UselessImportCheck"QRemove this unused import 'ir.ac.guilan.graphsocialnetwork.adapter.postsAdapter'.(´î¹ïùÿÿÿÿ8žìüÜ“,
 ksquid:UselessImportCheck"CRemove this unused import 'android.support.design.widget.Snackbar'.( À®p8œúãÜ“,
-\squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ8œúãÜ“,
-xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(„Ÿ¹¼8œúãÜ“,
 csquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.( ÈÎˆ
-csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.( ÈÎˆ
+\squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ8œúãÜ“,

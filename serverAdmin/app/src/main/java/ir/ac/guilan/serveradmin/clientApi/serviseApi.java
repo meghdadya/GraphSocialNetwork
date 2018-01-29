@@ -10,13 +10,7 @@ import android.support.annotation.Nullable;
 
 import org.greenrobot.eventbus.EventBus;
 
-
-/**
- * Created by babe on 1/14/18.
- */
-
-public class serviseApi extends Service {
-
+public class serviseApi extends Service {//get API for connect admin to server
 
 
     static public Client mClient;

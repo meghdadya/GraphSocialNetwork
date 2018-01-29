@@ -103,6 +103,25 @@ public class commandExecutor {
 		return new Gson().toJson(commincuteObject);
 	}
 
+	public String getallusers() {
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		try {
+
+			if (new DBConnection().select_all_users() != null) {
+				commincuteObject.setUsers(new DBConnection().select_all_users());
+				message.setMessageText("home done");
+			} else {
+				message.setMessageText("not load");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+
 	public String getFriends(int id) {
 
 		message message = new message();
@@ -239,6 +258,40 @@ public class commandExecutor {
 
 	}
 
+	public String getNodes() {
+		message message = new message();
+		commincuteObject commincuteObject = new commincuteObject();
+		if (new DBConnection().select_graph() != null) {
+			commincuteObject.setGraphNodesList(new DBConnection().select_graph());
+			message.setMessageText("done");
+		} else {
+
+			message.setMessageText("empty");
+		}
+		commincuteObject.setMessage(message);
+		return new Gson().toJson(commincuteObject);
+	}
+	
+	public String getPostLikes(post post) {
+			message message = new message();
+			commincuteObject commincuteObject = new commincuteObject();
+			try {
+				if (new DBConnection().select_posts_home(post) != null) {
+					commincuteObject.setUsers(new DBConnection().select_posts_home(post));
+					message.setMessageText("done");
+				} else {
+
+					message.setMessageText("empty");
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			commincuteObject.setMessage(message);
+			return new Gson().toJson(commincuteObject);
+		
+	}
+
 	public static void main(String[] args) {
 		// follow mfollow = new follow();
 		// mfollow.setFollower_id(1);
@@ -250,15 +303,16 @@ public class commandExecutor {
 		// mfollow.setFollowed_id(1);
 		// mfollow.setStatus(0);
 		// // System.out.println(new commandExecutor().followFunc(mfollow));
-		users users = new users();
-		users.setId(1);
-		System.out.println(new commandExecutor().getHome(users));
+		// users users = new users();
+		// users.setId(1);
+		// System.out.println(new commandExecutor().getHome(users));
 		// message message=new message();
 		// message.setMessageText("2");
 
 		// System.out.println(new commandExecutor().getHome(users));
 		// System.out.println(new commandExecutor().getFriends(2));
-		// System.out.println(new commandExecutor().getProfile(mfollow, users,message));
+		// System.out.println(new commandExecutor().getProfile(mfollow,
+		// users,message));
 		// like l1 = new like();
 		// l1.setPost_id(1);
 		// l1.setUser_id(2);
@@ -267,6 +321,12 @@ public class commandExecutor {
 		// message message = new message();
 		// message.setJson(new Gson().toJson(l1));
 		// new commandExecutor().setLike(message);
+		
+		post  post=new post();
+		post.setId(1);
+
+		System.out.println(new commandExecutor().getPostLikes(post));
+
 	}
 
 }

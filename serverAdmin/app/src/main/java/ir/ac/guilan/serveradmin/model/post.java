@@ -1,10 +1,6 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/9/18.
- */
-
-public class post {
+public class post { //fill the post constructor
     int id;
     String text;
     int user_id;

@@ -10,6 +10,7 @@ public class commincuteObject {
 	private List<users> Users;
 	private List<posts> posts;
 	private List<user_notifications> notificationsList;
+	 private List<graphNodes> graphNodesList;
 
 	public message getMessage() {
 		return Message;
@@ -58,4 +59,12 @@ public class commincuteObject {
 	public void setNotificationsList(List<user_notifications> notificationsList) {
 		this.notificationsList = notificationsList;
 	}
+	
+    public List<graphNodes> getGraphNodesList() {
+        return graphNodesList;
+    }
+
+    public void setGraphNodesList(List<graphNodes> graphNodesList) {
+        this.graphNodesList = graphNodesList;
+    }
 }

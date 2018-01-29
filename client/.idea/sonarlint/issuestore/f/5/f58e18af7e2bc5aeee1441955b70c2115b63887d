@@ -1,6 +1,6 @@
 
 squid:UselessImportCheck"VRemove this unused import 'ir.ac.guilan.graphsocialnetwork.utilities.DatePreferences'.(ÂœíÏ8Ñƒ­ê’,
-csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ÈèÃÁ
 csquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÈèÃÁ
 gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(’»ãÄ8Ñ­è’,
+csquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ÈèÃÁ
 xsquid:UselessImportCheck"ORemove this unused import 'android.support.design.widget.FloatingActionButton'.(„Ÿ¹¼8±²ƒè’,

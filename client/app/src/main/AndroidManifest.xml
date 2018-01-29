@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -51,6 +51,10 @@
         <activity
             android:name=".views.notificationActivity"
             android:label="@string/title_activity_notification"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".views.LikesActivity"
+            android:label="@string/title_activity_likes"
             android:theme="@style/AppTheme"></activity>
     </application>
 

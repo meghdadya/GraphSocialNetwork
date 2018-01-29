@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="مقداد"
+            android:text="عماد"
             android:layout_centerVertical="true"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/friend_name"
             android:layout_centerVertical="true"
-            android:text="من عاشق باشگاه سپیدرودم"
+            android:text="متن خود را وارد کنید..."
             android:textStyle="bold"
             tools:ignore="HardcodedText,RtlHardcoded" />
 

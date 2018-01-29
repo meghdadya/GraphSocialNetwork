@@ -1,10 +1,7 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/9/18.
- */
 
-public class follow {
+public class follow { //fill follow constructor
     int id;
     int follower_id;
     int followed_id;

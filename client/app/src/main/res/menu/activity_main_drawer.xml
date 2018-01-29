@@ -9,18 +9,18 @@
             android:icon="@drawable/ic_search_black_24dp"
             android:title="Find friend" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/bfs_search"
+            android:icon="@mipmap/worker"
+            android:title="BFS Search" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/logout"
+            android:icon="@mipmap/logout"
+            android:title="Log Out" />
     </group>
+    <item
+        android:id="@+id/text"
+        android:enabled="false"
+        android:title="powered by E.Pourjafar " />
 
 
 </menu>

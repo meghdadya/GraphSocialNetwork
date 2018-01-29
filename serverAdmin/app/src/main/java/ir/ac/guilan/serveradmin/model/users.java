@@ -1,10 +1,6 @@
 package ir.ac.guilan.serveradmin.model;
 
-/**
- * Created by gilaceco on 1/9/18.
- */
-
-public class users {
+public class users { //fill the user constructor
 
     int id;
     String name;

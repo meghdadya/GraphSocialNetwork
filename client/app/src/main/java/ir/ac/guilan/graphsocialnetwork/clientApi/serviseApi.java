@@ -1,6 +1,5 @@
 package ir.ac.guilan.graphsocialnetwork.clientApi;
 
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,14 +9,7 @@ import android.support.annotation.Nullable;
 
 import org.greenrobot.eventbus.EventBus;
 
-
-/**
- * Created by babe on 1/14/18.
- */
-
 public class serviseApi extends Service {
-
-
 
     static public Client mClient;
 
@@ -74,6 +66,5 @@ public class serviseApi extends Service {
 
         }
     }
-
 
 }

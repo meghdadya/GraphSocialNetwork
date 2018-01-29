@@ -21,8 +21,8 @@
             <RelativeLayout
 
                 android:id="@+id/activity_main"
-                android:gravity="right"
                 android:layout_width="match_parent"
+                android:gravity="right"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -31,7 +31,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     android:onClick="onClickNotifications"
-                    android:src="@drawable/ic_notifications_black_24dp" />
+                    android:src="@drawable/ic_notifications_black_24dp"
+                />
 
                 <com.nex3z.notificationbadge.NotificationBadge
                     android:id="@+id/badge"
@@ -40,7 +41,6 @@
                     android:layout_alignTop="@id/icon"
                     android:layout_marginLeft="-16dp"
                     android:layout_marginTop="-8dp"
-                    android:layout_toRightOf="@id/icon"
                     app:nbBackground="@drawable/badge_bg_with_shadow"
                     app:nbMaxTextLength="2" />
 

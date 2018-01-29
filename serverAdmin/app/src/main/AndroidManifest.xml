@@ -2,11 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ir.ac.guilan.serveradmin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/black_server"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/black_server"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -27,13 +29,15 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
         <service
             android:name=".clientApi.serviseApi"
             android:enabled="true"
             android:exported="false" />
 
-
+        <activity
+            android:name=".nodesActivity"
+            android:label="@string/title_activity_nodes"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

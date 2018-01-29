@@ -1,10 +1,7 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/17/18.
- */
-
-public class posts {
+public class posts { //fill posts constructor
+    //posts have all details of post : date , text ,...
 
     int like_count;
     boolean liked;

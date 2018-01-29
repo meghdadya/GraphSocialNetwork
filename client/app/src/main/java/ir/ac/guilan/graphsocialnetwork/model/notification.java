@@ -1,10 +1,6 @@
 package ir.ac.guilan.graphsocialnetwork.model;
 
-/**
- * Created by gilaceco on 1/28/18.
- */
-
-public class notification {
+public class notification { //fill notification constructor
     int id;
     int from_user_id;
     int to_user_id;
